@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + React</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+    rel="stylesheet">
+  <link rel="icon" href="image/favicon.html" type="image/png" sizes="16x16">
+  <link rel="stylesheet" type="text/css" href="webassets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="webassets/css/mystyle.css">
+  <link rel="stylesheet" type="text/css" href="webassets/css/animate.css">
+  <link rel="stylesheet" type="text/css" href="webassets/css/vendor.bundle.css">
+  <link rel="stylesheet" href="webassets/code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="webassets/stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216511093-1">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-216511093-1');
+  </script>
+  <!-- Global site tag (gtag.js) - Google Ads: 10835536229 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10835536229"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-10835536229');
+  </script>
+  <style>
+    .new-contact-sebi {
+      display: block !important;
+    }
+  </style>
+  	<style>
+		    .quickpay_header
+		    {
+		        display: inline-block;
+                -webkit-transform: translateZ(0);
+                -ms-transform: translateZ(0);
+                transform: translateZ(0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                -webkit-animation-name: pulse;
+                animation-name: pulse;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+                background: #0e7b34;
+		    }
+		</style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+<script src="webassets/js/jquery.min.js"></script>
+<script src="webassets/js/jquery.bundle.js"></script>
+<!-- Theme Script init() -->
+<script src="webassets/js/script.js"></script>
+
+<script src="webassets/js/wow.js"></script>
+<script>
+  new WOW().init();
+
+
+  function myFunction(x) {
+    $("#item_view").modal();
+  };
+
+
+
+</script>
+
+<script src="webassets/js/custom.js"></script>
+<script type="text/javascript">
+  var site_url = 'index.html';
+  var base_url = 'index.html';
+</script>
+
+
+<script type="text/javascript">
+  $(window).load(function () {
+    $('#onload').modal('show');
+  });
+
+  function SendNewsletteremail(url) {
+    //alert();
+    var emailfilter = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i
+    var regemailid = emailfilter.test(document.getElementById("emailfreew1").value);
+    if (regemailid == false) {
+      alert("Please Enter a valid Mail ID");
+      document.getElementById("emailfreew1").focus();
+      $('#emailfreew1').css('border-color', '#ff0000');
+      return false;
+    } else {
+      $('#emailfreew1').css('border-color', '#FFFFFF');
+    }
+
+    $.ajax({
+      //alert(url);
+      url: url,
+      type: "POST",
+      data: $("#news_letter").serialize(),
+      dataType: "json",
+
+      success: function (result) {
+        if (result.success == true) {
+          alert("Successfully Subscribe!!!");
+          $('#news_letter')[0].reset();
+        }
+        else if (result.success == false) {
+          alert("Already Exist");
+        }
+      }
+
+
+    });
+  }
+</script>
+
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+  window.$zopim || (function (d, s) {
+    var z = $zopim = function (c) { z._.push(c) }, $ = z.s =
+      d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+        z.set.
+        _.push(o)
+      }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+    $.src = "https://v2.zopim.com/?5j69Wk3behWIZ6CDGoXAV8jkr04EzkIj"; z.t = +new Date; $.
+      type = "text/javascript"; e.parentNode.insertBefore($, e)
+  })(document, "script");
+</script>
+<!--End of Zendesk Chat Script-->
+<link href="./webassets/sign_src/css/jquery.signaturepad.css" rel="stylesheet">
+
+<script src="./webassets/sign_src/js/numeric-1.2.6.min.js"></script>
+<script src="./webassets/sign_src/js/bezier.js"></script>
+<script src="./webassets/sign_src/js/jquery.signaturepad.js"></script>
+
+<script type='text/javascript'
+  src="https://objects.githubusercontent.com/github-production-release-asset-2e65be/2056312/eb9feea2-17eb-11e3-942d-bf4e2cb00387?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=releaseassetproduction%2F20250626%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20250626T151234Z&amp;X-Amz-Expires=1800&amp;X-Amz-Signature=198b85a391beef92c0bda547d8ddcf6f9570ee400a00db74717cf2a3ea0e0e18&amp;X-Amz-SignedHeaders=host&amp;response-content-disposition=attachment%3B%20filename%3Dhtml2canvas.js&amp;response-content-type=application%2Foctet-stream"></script>
+<script src="./webassets/sign_src/js/json2.min.js"></script>
+<script>
+  $(window).load(function () {
+    $('#onload').modal('show');
+  });
+</script>
+
+</html>
