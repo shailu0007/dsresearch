@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 
 const Header = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <>
       <header className="site-header header-s1 is-sticky">
@@ -40,50 +49,95 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {/* Inline styles should be moved to CSS or use style objects if dynamic */}
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-8">
-            <table
-              className="table table-bordered"
-              style={{
-                marginTop: 30,
-                position: "absolute",
-                top: 50,
-                background: "#0000007d",
-                zIndex: 999,
-                color: "#fff",
-                textAlign: "center"
-              }}
-            >
-              <thead>
-                <tr>
-                  <th colSpan={5} className="text-center">
-                    Number Of Complaints
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th style={{ fontSize: 12 }}>At The Beginning Of The Month</th>
-                  <th style={{ fontSize: 12 }}>Received During The Month</th>
-                  <th style={{ fontSize: 12 }}>Resolved During The Month</th>
-                  <th style={{ fontSize: 12 }}>Pending At The End Of The Month</th>
-                  <th style={{ fontSize: 12 }}>Reasons For Pendency</th>
-                </tr>
-              </tbody>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>NA</td>
-                </tr>
-              </tbody>
-            </table>
+        {/* Responsive style for top-contact */}
+        <style>{`
+          @media (max-width: 767px) {
+            .top-contact {
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 6px;
+              padding: 0;
+              margin: 0;
+            }
+            .top-contact li {
+              width: 100%;
+              text-align: center;
+              font-size: 14px;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .top-contact em {
+              margin-right: 6px;
+            }
+          }
+        `}</style>
+        {/* Only show desktop table above slider */}
+        {!isMobile && (
+          <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
+              <div
+                style={{
+                  overflowX: 'auto',
+                  marginTop: 30,
+                  position: "absolute",
+                  top: 50,
+                  width: "100%",
+                  zIndex: 999,
+                  display: 'block'
+                }}
+                className="complaints-table-desktop"
+              >
+                <table
+                  className="table table-bordered"
+                  style={{
+                    background: "#0000007d",
+                    color: "#fff",
+                    textAlign: "center",
+                    minWidth: 600
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th colSpan={5} className="text-center">
+                        Number Of Complaints
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th style={{ fontSize: 12 }}>At The Beginning Of The Month</th>
+                      <th style={{ fontSize: 12 }}>Received During The Month</th>
+                      <th style={{ fontSize: 12 }}>Resolved During The Month</th>
+                      <th style={{ fontSize: 12 }}>Pending At The End Of The Month</th>
+                      <th style={{ fontSize: 12 }}>Reasons For Pendency</th>
+                    </tr>
+                    <tr>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>NA</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
+        {/* Responsive table placement logic */}
+        <style>{`
+          @media (max-width: 767px) {
+            .complaints-table-desktop { display: none !important; }
+          }
+          @media (min-width: 768px) {
+            .complaints-table-desktop { display: block !important; }
+          }
+        `}</style>
         <div id="slider" className="banner banner-slider carousel slide carousel-fade">
           <div className="carousel-inner">
             <div className="item active">
@@ -197,6 +251,58 @@ const Header = () => {
             <span className="sr-only">Next</span>
           </a>
         </div>
+        {/* Only show mobile table below slider */}
+        {isMobile && (
+          <div className="row">
+            <div className="col-xs-12">
+              <div
+                style={{
+                  overflowX: 'auto',
+                  margin: '16px 0',
+                  position: "static",
+                  width: "100%",
+                  zIndex: 999,
+                  display: 'block'
+                }}
+                className="complaints-table-mobile"
+              >
+                <table
+                  className="table table-bordered"
+                  style={{
+                    background: "#0000007d",
+                    color: "#fff",
+                    textAlign: "center",
+                    minWidth: 600
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th colSpan={5} className="text-center">
+                        Number Of Complaints
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th style={{ fontSize: 12 }}>At The Beginning Of The Month</th>
+                      <th style={{ fontSize: 12 }}>Received During The Month</th>
+                      <th style={{ fontSize: 12 }}>Resolved During The Month</th>
+                      <th style={{ fontSize: 12 }}>Pending At The End Of The Month</th>
+                      <th style={{ fontSize: 12 }}>Reasons For Pendency</th>
+                    </tr>
+                    <tr>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>NA</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="serviceFix">
           <a href="https://wa.me/+919340546337" target="_blank" rel="noopener noreferrer">
             <img src="webassets/image/approval.png" alt="" />
