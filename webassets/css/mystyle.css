@@ -134,95 +134,140 @@ background-image: url("../../../www.transparenttextures.com/patterns/brick-wall.
   z-index: 0;
 }
 
-.services-block{
-	position:relative;
-	margin-bottom:70px;
+.services-block {
+  position: relative;
+  margin-bottom: 70px;
+  width: 100%;
+  padding: 0 15px;
 }
 
-.services-block:last-child{
-	margin-bottom:0px;
+.services-block:last-child {
+  margin-bottom: 0px;
 }
-.services-block .inner-box:hover img
-{
+
+.services-block .inner-box {
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 35px 28px -34px rgba(0, 0, 0, 0.23);
+  padding: 25px 20px 15px;
+  max-width: 500px;
+  /* margin: 0 auto; */
+  transition: all 0.5s ease-out 0s;
+  background-color: #fff;
+}
+
+.services-block .inner-box:hover {
+  transform: scale(1.03);
+  transition: all 0.5s ease-in 0s;
+}
+
+.services-block .inner-box:hover img {
   transform: rotate(360deg);
   transition: 1s ease all;
 }
-.services-block .inner-box:hover h3 a
-{
-  color:#1abc9c;
-}
-.services-block .inner-box{
-	position:relative;
-	text-align:center;
-  box-shadow: 0px 35px 28px -34px rgba(0, 0, 0, 0.23);
-  padding-bottom: 15px;
-	max-width:330px;
-  transition: all 0.5s ease-out 0s;
-}
-.services-block .inner-box:hover {
-    transform: scale(1.03);
-    transition: all 0.5s ease-in 0s;
-}
-.services-block .inner-box .icon-boxx{
-	position:relative;
-	margin-bottom:17px;
+
+.services-block .inner-box:hover h3 a {
+  color: #1abc9c;
 }
 
-.services-block .inner-box h3{
-	position:relative;
-	color:#2f2f2f;
-	font-size:18px;
-	font-weight:600;
-	margin-bottom:10px;
-	text-transform:uppercase;
+.services-block .inner-box .icon-boxx {
+  position: relative;
+  margin-bottom: 17px;
 }
 
-.services-block .inner-box h3 a{
-	color:#2f2f2f;
-	transition:all 0.3s ease;
-	-moz-transition:all 0.3s ease;
-	-webkit-transition:all 0.3s ease;
-	-ms-transition:all 0.3s ease;
-	-o-transition:all 0.3s ease;
+.services-block .inner-box h3 {
+  position: relative;
+  color: #2f2f2f;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.services-block .inner-box h3 a:hover{
-	color:#9cc327;
+.services-block .inner-box h3 a {
+  color: #2f2f2f;
+  transition: all 0.3s ease;
 }
 
-.services-block .inner-box .text{
-	position:relative;
-	color:#444444;
-	font-size:15px;
+.services-block .inner-box h3 a:hover {
+  color: #9cc327;
 }
 
+.services-block .inner-box .text {
+  position: relative;
+  color: #444444;
+  font-size: 15px;
+}
+
+/* Column-specific margin adjustments */
 .services-section .left-column .services-block:nth-child(1),
-.services-section .left-column .services-block:nth-child(3){
-	margin-left:115px;
+.services-section .left-column .services-block:nth-child(3) {
+  margin-left: 115px;
 }
 
-.services-section .right-column .services-block:nth-child(2){
-	margin-left:115px;
+.services-section .right-column .services-block:nth-child(2) {
+  margin-left: 115px;
 }
 
-.services-section .bulb-box{
+/* Bulb image styling */
+.services-section .bulb-box {
   position: absolute;
   left: 41%;
-  float: left;
   bottom: 60px;
   margin-left: -150px;
   width: 560px;
 }
 
-.services-section:after{
-	position:absolute;
-	content:'';
-	right:0px;
-	bottom:0px;
-	width:403px;
-	height:529px;
-	z-index:-1;
-	background:url(../images/resource/side-icon.html) right bottom no-repeat;
+.services-section:after {
+  position: absolute;
+  content: '';
+  right: 0px;
+  bottom: 0px;
+  width: 403px;
+  height: 529px;
+  z-index: -1;
+  background: url(../images/resource/side-icon.html) right bottom no-repeat;
+}
+
+/* ✅ Responsive Styling for Mobile */
+@media screen and (max-width: 768px) {
+  .services-block {
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+
+  .services-block .inner-box {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+
+  .services-block .inner-box h3 {
+    font-size: 16px;
+  }
+
+  .services-block .inner-box .text {
+    font-size: 14px;
+  }
+
+  .services-block .inner-box .icon-boxx img {
+    width: 50px;
+    height: auto;
+  }
+
+  /* Remove custom margin-left on smaller screens */
+  .services-section .left-column .services-block:nth-child(1),
+  .services-section .left-column .services-block:nth-child(3),
+  .services-section .right-column .services-block:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .services-section .bulb-box {
+    display: none;
+  }
+
+  .services-section:after {
+    display: none;
+  }
 }
 
 /*Cal To Action Section*/
