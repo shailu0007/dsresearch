@@ -30,6 +30,17 @@ const ReportSection = () => {
             {/* Market Update Card */}
             <div className="col-md-4">
                 <h3 className="myhed">Market Update </h3>
+                <style>
+                    {`
+                        .marq .update-item {
+                            margin-bottom: 22px;
+                            padding-bottom: 0;
+                        }
+                        .marq .update-item:last-child {
+                            margin-bottom: 0;
+                        }
+                    `}
+                </style>
                 <div
                     className="sidebar-widget services-category effect2 bg-white"
                     style={{
@@ -58,35 +69,23 @@ const ReportSection = () => {
                             paddingRight: 8,
                         }}
                     >
-
-
                         <div className="marq">
-                            <p></p><p><p>CASH BUY SOBHA ABOVE 496 TARGET 500 / 505 / 510 STOPLOSS 490</p>
-                            </p>
-                            <br />
-
-                            <p></p>
-                            <p></p><p><p>FUTURE UPDATE : FEDERALBNK BUY CALL OUR FIRST TAREGET 83.20 ACHIEVED BOOK PARTIAL PROFIT</p>
-                            </p>
-                            <br />
-
-                            <p></p>
-                            <p></p><p><p>FUTURE PLATINUM UPDATE: BALKRISIND SELL CALL HITS OUR TARGET OF 1174 BOOK PLATINUM PROFIT</p>
-                            </p>
-                            <br />
-
-                            <p></p>
-                            <p></p><p><p>CASH SIGNATURE UPDATE:TIMETECHNO BUY CALL NEAR TO FINAL TARGET 134 BOOK FULL PROFIT</p>
-                            </p>
-                            <br />
-
-                            <p></p>
+                            <div className="update-item">
+                                CASH BUY SOBHA ABOVE 496 TARGET 500 / 505 / 510 STOPLOSS 490
+                            </div>
+                            <div className="update-item">
+                                FUTURE UPDATE : FEDERALBNK BUY CALL OUR FIRST TAREGET 83.20 ACHIEVED BOOK PARTIAL PROFIT
+                            </div>
+                            <div className="update-item">
+                                FUTURE PLATINUM UPDATE: BALKRISIND SELL CALL HITS OUR TARGET OF 1174 BOOK PLATINUM PROFIT
+                            </div>
+                            <div className="update-item">
+                                CASH SIGNATURE UPDATE:TIMETECHNO BUY CALL NEAR TO FINAL TARGET 134 BOOK FULL PROFIT
+                            </div>
                         </div>
-
                     </marquee>
                 </div>
                 <img src="webassets/image/box_shadow.png" alt="" style={{ width: '100%' }} />
-
             </div>
         </>
     )

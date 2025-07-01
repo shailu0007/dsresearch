@@ -4,6 +4,7 @@ import Marquee from './notification/Marquee'
 import About from './About'
 import CallArea from './notification/CallArea'
 import Services from './Services'
+import Features from './Features'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
     <About/>
     <CallArea/>
     <Services/>
+    <Features/>
     </>
   )
 }
