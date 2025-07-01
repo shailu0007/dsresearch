@@ -5,6 +5,9 @@ import About from './About'
 import CallArea from './notification/CallArea'
 import Services from './Services'
 import Features from './Features'
+import Feedback from './Feedback'
+import OurBlogs from './OurBlogs'
+import Footer from './layout/Footer'
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
     <CallArea/>
     <Services/>
     <Features/>
+    <Feedback/>
+    <OurBlogs/>
+    <Footer/>
     </>
   )
 }
