@@ -1,6 +1,7 @@
 import React from 'react'
 import ReportSection from './ReportSection'
 
+
 const Services = () => {
     return (<>
         {/* Responsive CSS for mobile only, no desktop interference */}
@@ -35,11 +36,18 @@ const Services = () => {
                 .bg-white {
                     min-height: unset !important;
                 }
+
             }
+                @media only screen and (max-width: 767px) {
+  .bulb-box {
+    display: none;
+  }
+}
+
             `}
         </style>
         <div className="clearfix"></div>
-        <section className="services-section">
+        <section className="services-section ">
             <div className="auto-container">
                 <div className="sec-title centered">
                     <h1 className="heading-section">Our Best <span>Services</span> </h1>
@@ -111,30 +119,32 @@ const Services = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bulb-box wow zoomIn">
-                        <div className="image-column">
-                            <img
-                                src="webassets/image/ser.png"
-                                alt=""
-                                style={{ maxWidth: '100%', height: 'auto' }}
-                            />
-                        </div>
-                        <div className="mn-img">
-                            <img
-                                className=""
-                                style={{
-                                    borderRadius: '50%',
-                                    width: '180px',
-                                    height: '180px',
-                                    zIndex: -1,
-                                    position: 'static',
-                                    maxWidth: '100%'
-                                }}
-                                src="webassets/image/about.jpg"
-                                alt=""
-                            />
-                        </div>
-                    </div>
+            <div className="bulb-box wow zoomIn">
+  <div className="image-column">
+    <img
+      src="webassets/image/ser.png"
+      alt=""
+      style={{ maxWidth: '100%', height: 'auto' }}
+    />
+  </div>
+  <div className="mn-img">
+    <img
+      style={{
+        borderRadius: '50%',
+        width: '275px',
+        height: '285px',
+        zIndex: -1,
+        position: 'static',
+        maxWidth: '100%',
+        marginTop: '26px',
+        marginLeft: '26px',
+      }}
+      src="webassets/image/about.jpg"
+      alt=""
+    />
+  </div>
+</div>
+
                 </div>
             </div>
         </section>
