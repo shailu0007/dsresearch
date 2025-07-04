@@ -1,7 +1,9 @@
 import React from 'react';
-
+import AboutCard from './AboutCard'; 
+import { Outlet } from 'react-router-dom';
 const About = () => {
     return (
+        <>
         <div className="finance">
             {/* Overlay applies on the entire section */}
             <div className="overlay"></div>
@@ -28,7 +30,13 @@ const About = () => {
 
             {/* Right Section for Image */}
             <div className="finance-right"></div>
+       
+
         </div>
+<Outlet/>
+                   </>
+                   
+        
     );
 };
 

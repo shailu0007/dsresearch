@@ -7,16 +7,21 @@ import Features from './Features'
 import Feedback from './Feedback'
 import OurBlogs from './OurBlogs'
 
+
 const Home = () => {
   return (
     <>
-    <Marquee/>
+    <Marquee/>    
     <About/>
     <CallArea/>
     <Services/>
     <Features/>
     <Feedback/>
     <OurBlogs/>
+
+    {/*new service */}
+  
+
     </>
   )
 }

@@ -52,7 +52,7 @@ const ReportSection = () => {
     color: '#1f2937',
     marginBottom: '1.5rem',
     textAlign: 'center',
-    borderBottom: '2px solid rgba(44, 45, 46, 0.23)',
+    borderBottom: '2px solid rgb(44, 45, 46)',
   };
 
   const cardStyle = {
@@ -78,7 +78,7 @@ const ReportSection = () => {
 
   const trackSheetItemStyle = {
     textAlign: 'center',
-    padding: '0.5rem',
+    // padding: '0.5rem',
     borderRadius: '0.5rem',
     transition: 'background-color 0.3s ease',
     cursor: 'pointer'
@@ -209,8 +209,8 @@ const ReportSection = () => {
         gap: 1.5rem !important;
       }
       .card {
-        height: 400px !important;
-        padding: 1rem !important;
+        height: 480px !important;
+        padding: 3rem !important;
       }
       .heading {
         font-size: 1.5rem !important;

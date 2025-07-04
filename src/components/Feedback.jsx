@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const testimonials = [
   {
-    text: "I would like to thank Eminent Research to suggest me on  Signature services. Also, I would like to give a special thank you for your valuable recommendations for my investment.",
+    text: "I would like to thank Eminent Research to suggest me on Signature services. Also, I would like to give a special thank you for your valuable recommendations for my investment.",
     img: "uploads/tesimonials/dummy.png",
-    name: "vijay Singh",
+    name: "Vijay Singh",
     role: "Trader"
   },
   {
@@ -14,15 +14,15 @@ const testimonials = [
     role: "Businessman"
   },
   {
-    text: "I am Satisfied with Your Support Which Help me to Grow up of My Capital, Really It is Very Good Experience with Your Services.",
-    img: "uploads/tesimonials/index.html",
-    name: "Mr. Ayyar swami",
+    text: "I am satisfied with your support which helped me grow my capital. Really a very good experience with your services.",
+    img: "uploads/tesimonials/index.html", // intentionally broken
+    name: "Mr. Ayyar Swami",
     role: "Trader"
   },
   {
-    text: "I am Completely Satisfied With Eminent Research's Basic Stock Cash Services, I appreciate the Research Team Of Eminent Research & Best Executive Support.",
-    img: "uploads/tesimonials/index.html",
-    name: "Mr. dAS",
+    text: "I am completely satisfied with Eminent Research's Basic Stock Cash Services. I appreciate the research team and executive support.",
+    img: "uploads/tesimonials/index.html", // intentionally broken
+    name: "Mr. Das",
     role: "Trader"
   }
 ];
@@ -30,20 +30,23 @@ const testimonials = [
 const Feedback = () => {
   const [active, setActive] = useState(0);
 
-  const prev = () => setActive(active === 0 ? testimonials.length - 1 : active - 1);
-  const next = () => setActive(active === testimonials.length - 1 ? 0 : active + 1);
+  const prev = () => setActive((active - 1 + testimonials.length) % testimonials.length);
+  const next = () => setActive((active + 1) % testimonials.length);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 9000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="section section-quotes section-pad-lg light" style={{ position: 'relative', overflow: 'hidden' }}>
-      <style>
-        {`
+      <style>{`
         .feedback-slider-container {
-          max-width: 600px;
+          max-width: 700px;
           margin: 0 auto;
-          background: #fff;
-          border-radius: 18px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-          padding: 36px 24px 32px 24px;
+          padding: 36px 24px;
           position: relative;
           z-index: 2;
         }
@@ -58,24 +61,14 @@ const Feedback = () => {
           background: #eee;
           border: none;
           border-radius: 50%;
-          width: 38px;
-          height: 38px;
-          font-size: 1.4em;
-          color: #8c20ba;
+          width: 40px;
+          height: 40px;
+          font-size: 1.9em;
+          color: #000000;
           cursor: pointer;
           transition: background 0.2s;
           display: flex;
           align-items: center;
-          justify-content: center;
-        }
-        .feedback-arrow-btn:hover {
-          background: #8c20ba;
-          color: #fff;
-        }
-        .feedback-dots {
-          display: flex;
-          gap: 8px;
-          margin-top: 10px;
           justify-content: center;
         }
         .feedback-dot {
@@ -87,82 +80,83 @@ const Feedback = () => {
           transition: background 0.2s;
         }
         .feedback-dot.active {
-          background: #8c20ba;
+          background: rgb(0, 0, 0);
+        }
+        .feedback-dots {
+          display: flex;
+          gap: 8px;
+          margin-top: 12px;
+          justify-content: center;
         }
         .feedback-profile-img {
-          width: 70px;
-          height: 70px;
+          width: 100px;
+          height: 110px;
           border-radius: 50%;
           object-fit: cover;
-          border: 3px solid #8c20ba;
-          margin-bottom: 10px;
+          border: 3px solid rgb(255, 255, 255);
+          margin-bottom: 12px;
         }
         .feedback-quote {
-          font-size: 1.15em;
-          color: #444;
-          font-style: italic;
-          margin-bottom: 18px;
-          min-height: 80px;
+          font-size: 1.2em;
+          color: #fff;
+          margin-bottom: 16px;
         }
         .feedback-profile-name {
           font-weight: bold;
-          color: #8c20ba;
-          margin-bottom: 2px;
+          color: #fff;
         }
         .feedback-profile-role {
-          color: #888;
-          font-size: 0.98em;
+          color: #ccc;
+          font-size: 0.95em;
         }
+
         @media (max-width: 767px) {
           .feedback-slider-container {
-            padding: 24px 8px 24px 8px;
+            padding: 24px 12px;
+          }
+          .feedback-quote {
+            font-size: 1em;
           }
         }
-        .feedback-bg-img {
-          position: absolute;
-          left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
-        }
-        .feedback-bg-overlay {
-          position: absolute;
-          left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: 1;
-        }
-        `}
-      </style>
+      `}</style>
+
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="content row">
           <div className="col-md-offset-2 col-md-8 center">
             <div className="centered">
-              <h1 className="heading-section">Client <span>Feedback</span> </h1>
+              <h1 className="heading-section text-center">
+                Client <span>Feedback</span>
+              </h1>
             </div>
             <div className="testimonials">
-              <div className="feedback-slider-container">
-                <div className="quotes" style={{ textAlign: 'center' }}>
-                  <img
-                    src={testimonials[active].img}
-                    alt={testimonials[active].name}
-                    className="feedback-profile-img"
-                  />
-                  <div className="quotes-text center feedback-quote">
-                    <p>{testimonials[active].text}</p>
-                  </div>
-                  <div className="profile">
-                    <div className="feedback-profile-name">{testimonials[active].name}</div>
-                    <div className="feedback-profile-role">{testimonials[active].role}</div>
-                  </div>
+              <div className="feedback-slider-container text-center">
+                <img
+                  src={testimonials[active].img}
+                  alt={testimonials[active].name}
+                  className="feedback-profile-img"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+                  }}
+                />
+                <div className="feedback-quote">
+                  <p>{testimonials[active].text}</p>
                 </div>
+                <div className="profile">
+                  <div className="feedback-profile-name">{testimonials[active].name}</div>
+                  <div className="feedback-profile-role">{testimonials[active].role}</div>
+                </div>
+
                 <div className="feedback-slider-controls">
-                  <button className="feedback-arrow-btn" onClick={prev} aria-label="Previous">
-                    &#8592;
-                  </button>
-                  <button className="feedback-arrow-btn" onClick={next} aria-label="Next">
-                    &#8594;
-                  </button>
+                  <button className="feedback-arrow-btn" onClick={prev}>&#8592;</button>
+                  <button className="feedback-arrow-btn" onClick={next}>&#8594;</button>
                 </div>
+
                 <div className="feedback-dots">
                   {testimonials.map((_, idx) => (
                     <div
                       key={idx}
-                      className={`feedback-dot${active === idx ? " active" : ""}`}
+                      className={`feedback-dot${active === idx ? ' active' : ''}`}
                       onClick={() => setActive(idx)}
                     />
                   ))}
@@ -171,12 +165,9 @@ const Feedback = () => {
             </div>
           </div>
         </div>
-        {/* background image and overlay */}
-        <img className="feedback-bg-img" src="webassets/image/gallery4-large.jpg" alt="" />
-        <div className="feedback-bg-overlay"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Feedback
+export default Feedback;

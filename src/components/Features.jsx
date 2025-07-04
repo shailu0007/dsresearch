@@ -9,7 +9,7 @@ const Features = () => {
           {`
             @media (max-width: 767px) {
               .wpb_wrapper {
-              margin-left: 5em !important;
+              margin-left: 1em !important;
                 text-align: center;
                 display: flex;
                 flex-direction: column;
@@ -32,7 +32,7 @@ const Features = () => {
             </div>
           </div>
           <div className="row">
-            <div className="vc_row wpb_row vc_inner vc_row-fluid">
+            <div className="">
               <div className="wpb_column vc_column_container vc_col-sm-12">
                 <div className="vc_column-inner ">
                   <div className="wpb_wrapper">
