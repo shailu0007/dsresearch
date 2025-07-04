@@ -11,6 +11,16 @@ import AboutCard from "../components/AboutCard";
 import ServiceSub from "../components/subcomponent/ServiceSub";
 import servicedeails from "../components/details/serviceDetails.js";
 import TermsAndCondition from "../components/TermsAndCondition.jsx";
+import PrivacyPolicy from "../components/PrivacyPolicy.jsx";
+import ServiceAgreement from "../components/ServiceAgreement.jsx";
+import KYC from "../components/KYC.jsx";
+import RiskProfile from "../components/RiskProfile.jsx";
+import FAQ from "../components/FAQ.jsx";
+import Compliance from "../components/Compliance.jsx";
+import Contact from "../components/Contact.jsx";
+import Disclosure from "../components/Disclosure.jsx";
+import Investor from "../components/Investor.jsx";
+import ExpertAdvice from "../components/ExpertAdice.jsx";
 
 const router = createBrowserRouter([
   
@@ -29,10 +39,20 @@ const router = createBrowserRouter([
   path: `services/${path}`,
   element: <ServiceSub {...stockcashregular} />
 })),
-      { path: "terms-and-condition", element: <TermsAndCondition /> },
       { path: "feedback", element: <Feedback /> },
       { path: "ourblogs", element: <OurBlogs /> },
       { path: "ourblogs", element: <OurBlogs /> },
+       { path: "terms-and-condition", element: <TermsAndCondition /> },
+       { path: "privacy-and-policy", element: <PrivacyPolicy /> },
+        { path: "service-agreement", element: <ServiceAgreement /> },
+        { path: "kyc", element: <KYC /> },
+        { path: "risk-profile", element: <RiskProfile /> },
+        { path: "faq", element: <FAQ /> },
+        { path: "compliance", element: <Compliance /> },
+        { path: "contact", element: <Contact /> },
+         { path: "disclosure", element: <Disclosure /> },
+         { path: "investor-charter", element: <Investor /> },
+         { path: "expertAdvice", element: <ExpertAdvice /> },
     ],
   },
 ]);
