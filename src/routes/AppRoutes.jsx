@@ -10,6 +10,7 @@ import OurBlogs from "../components/OurBlogs";
 import AboutCard from "../components/AboutCard";
 import ServiceSub from "../components/subcomponent/ServiceSub";
 import servicedeails from "../components/details/serviceDetails.js";
+import TermsAndCondition from "../components/TermsAndCondition.jsx";
 
 const router = createBrowserRouter([
   
@@ -28,8 +29,9 @@ const router = createBrowserRouter([
   path: `services/${path}`,
   element: <ServiceSub {...stockcashregular} />
 })),
-      { path: "features", element: <Features /> },
+      { path: "terms-and-condition", element: <TermsAndCondition /> },
       { path: "feedback", element: <Feedback /> },
+      { path: "ourblogs", element: <OurBlogs /> },
       { path: "ourblogs", element: <OurBlogs /> },
     ],
   },

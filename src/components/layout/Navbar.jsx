@@ -9,6 +9,7 @@ const Navbar = () => {
           <img className="logo logo-dark" alt="" src="assets/img/enment_logo.png" />
           <img className="logo logo-light" alt="" src="assets/img/enment_logo.png" />
         </Link>
+
         <div className="navbar-header">
           <button
             type="button"
@@ -26,10 +27,13 @@ const Navbar = () => {
             <Link className="btn" to="#">Get Expert Advice</Link>
           </div>
         </div>
+
         <nav className="navbar-collapse collapse" id="mainnav">
           <ul className="nav navbar-nav">
             <li className="dropdown active"><NavLink to="/">Home</NavLink></li>
-            <li className=""><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+
+            {/* ✅ Full Services Dropdown */}
             <li className="dropdown">
               <NavLink to="/services" className="dropdown-toggle">Services <b className="caret"></b></NavLink>
               <ul className="dropdown-menu">
@@ -78,12 +82,30 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li className=""><NavLink to="/features">Features</NavLink></li>
-            <li className=""><NavLink to="/feedback">Feedback</NavLink></li>
-            <li className=""><NavLink to="/ourblogs">Our Blogs</NavLink></li>
+
+            {/* ✅ Static top-level navs */}
+            <li><NavLink to="/features">Features</NavLink></li>
+            <li><NavLink to="/feedback">Feedback</NavLink></li>
+            <li><NavLink to="/ourblogs">Our Blogs</NavLink></li>
+            <li><NavLink to="/pricing">Pricing</NavLink></li>
+            <li><NavLink to="/payment">Payment</NavLink></li>
+            <li><NavLink to="/pastperformance">Past Performance</NavLink></li>
+            <li><NavLink to="/career">Career</NavLink></li>
+
+            {/* ✅ More Dropdown */}
             <li className="dropdown">
               <NavLink to="#" className="dropdown-toggle">More <b className="caret"></b></NavLink>
               <ul className="dropdown-menu">
+                <li><NavLink to="/terms-and-condition">Terms &amp; Condition</NavLink></li>
+                <li><NavLink to="/privacy">Privacy Policy</NavLink></li>
+                <li><NavLink to="/service-agreement">Service Agreement</NavLink></li>
+                <li><NavLink to="/kyc">KYC Form</NavLink></li>
+                <li><NavLink to="/risk-profile">Risk Profile</NavLink></li>
+                <li><NavLink to="/faq">FAQ</NavLink></li>
+                <li><NavLink to="/compliance">Compliance</NavLink></li>
+                <li><NavLink to="/contact">Contact Us</NavLink></li>
+                <li><NavLink to="/disclosure">Disclosure</NavLink></li>
+                <li><NavLink to="/investor-charter">Investor Charter</NavLink></li>
               </ul>
             </li>
           </ul>

@@ -14,7 +14,9 @@ function App() {
   return (
     <div className="site-body style-v1">
       {isHome ? <Header /> : <PageHeader />}
+      <div  style={{ marginTop: "2em", marginBottom: "10em" }}>
       <Outlet />
+      </div>
       <Footer />
       <Model />
     </div>
