@@ -3,7 +3,7 @@ import React from 'react';
 const ServiceSub = ({ table, overview, feature, mediumOfCall, sampleCall }) => {
 
   return (
-    <div className="container">
+    <div className="container" style={{ marginTop: "2em", marginBottom: "10em" }}>
       <div className="row">
         <div className="col-md-4">
           <div className="sidepanel">
