@@ -9,7 +9,7 @@ import Feedback from "../components/Feedback";
 import OurBlogs from "../components/OurBlogs";
 import AboutCard from "../components/AboutCard";
 import ServiceSub from "../components/subcomponent/ServiceSub";
-import servicedeails from "../components/details/Servicedetails";
+import servicedeails from "../components/details/serviceDetails.js";
 
 const router = createBrowserRouter([
   
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "services", element: <Services /> },
      ...servicedeails.map(({ path, stockcashregular }) => ({
   path: `services/${path}`,
-  element: <ServiceSub stockcashregular={stockcashregular} />
+  element: <ServiceSub {...stockcashregular} />
 })),
       { path: "features", element: <Features /> },
       { path: "feedback", element: <Feedback /> },

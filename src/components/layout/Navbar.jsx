@@ -1,13 +1,14 @@
 import React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <div className="navbar navbar-primary">
       <div className="container containerChange01">
-        <a className="navbar-brand" href="index.html">
+        <Link className="navbar-brand" to="/">
           <img className="logo logo-dark" alt="" src="assets/img/enment_logo.png" />
           <img className="logo logo-light" alt="" src="assets/img/enment_logo.png" />
-        </a>
+        </Link>
         <div className="navbar-header">
           <button
             type="button"
@@ -22,81 +23,69 @@ const Navbar = () => {
             <span className="icon-bar"></span>
           </button>
           <div className="quote-btn">
-            <a className="btn" href="#">Get Expert Advice</a>
+            <Link className="btn" to="#">Get Expert Advice</Link>
           </div>
         </div>
         <nav className="navbar-collapse collapse" id="mainnav">
           <ul className="nav navbar-nav">
-            <li className="dropdown active"><a href="Home.html">Home</a></li>
-            <li className=""><a href="aboutus.html">About</a></li>
+            <li className="dropdown active"><NavLink to="/">Home</NavLink></li>
+            <li className=""><NavLink to="/about">About</NavLink></li>
             <li className="dropdown">
-              <a href="service.html" className="dropdown-toggle">Services <b className="caret"></b></a>
+              <NavLink to="/services" className="dropdown-toggle">Services <b className="caret"></b></NavLink>
               <ul className="dropdown-menu">
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav4">Stock Cash Services</a>
+                  <NavLink to="#" className="catnav" id="catnav4">Stock Cash Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/stock-cash-regular.html">Stock Cash Regular</a></li>
-                    <li><a href="services/stock-cash-signature.html">Stock Cash Signature</a></li>
+                    <li><NavLink to="/services/stock-cash-regular">Stock Cash Regular</NavLink></li>
+                    <li><NavLink to="/services/stock-cash-signature">Stock Cash Signature</NavLink></li>
                   </ul>
                 </li>
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav5">Stock Future Services</a>
+                  <NavLink to="#" className="catnav" id="catnav5">Stock Future Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/stock-future-signature.html">Stock Future Signature</a></li>
-                    <li><a href="services/stock-future-positional.html">Stock Future Positional</a></li>
-                    <li><a href="services/stock-future-regular.html">Stock Future Regular</a></li>
+                    <li><NavLink to="/services/stock-future-signature">Stock Future Signature</NavLink></li>
+                    <li><NavLink to="/services/stock-future-positional">Stock Future Positional</NavLink></li>
+                    <li><NavLink to="/services/stock-future-regular">Stock Future Regular</NavLink></li>
                   </ul>
                 </li>
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav6">Nifty Services</a>
+                  <NavLink to="#" className="catnav" id="catnav6">Nifty Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/nifty-support.html">Nifty Support</a></li>
-                    <li><a href="services/index-platinum.html">Index Platinum</a></li>
-                    <li><a href="services/index-expiry-special.html">Index Expiry Special</a></li>
+                    <li><NavLink to="/services/nifty-support">Nifty Support</NavLink></li>
+                    <li><NavLink to="/services/index-platinum">Index Platinum</NavLink></li>
+                    <li><NavLink to="/services/index-expiry-special">Index Expiry Special</NavLink></li>
                   </ul>
                 </li>
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav8">Stock Option Services</a>
+                  <NavLink to="#" className="catnav" id="catnav8">Stock Option Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/stock-option-regular.html">Stock Option Regular</a></li>
-                    <li><a href="services/stock-option-signature.html">Stock Option Signature</a></li>
+                    <li><NavLink to="/services/stock-option-regular">Stock Option Regular</NavLink></li>
+                    <li><NavLink to="/services/stock-option-signature">Stock Option Signature</NavLink></li>
                   </ul>
                 </li>
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav9">Commodity Services</a>
+                  <NavLink to="#" className="catnav" id="catnav9">Commodity Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/all-mcx.html">ALL MCX</a></li>
-                    <li><a href="services/all-agri-product.html">All Agri Product</a></li>
+                    <li><NavLink to="/services/all-mcx">ALL MCX</NavLink></li>
+                    <li><NavLink to="/services/all-agri-product">All Agri Product</NavLink></li>
                   </ul>
                 </li>
                 <li className="hover01">
-                  <a href="#" className="catnav" id="catnav11">Journal Services</a>
+                  <NavLink to="#" className="catnav" id="catnav11">Journal Services</NavLink>
                   <ul className="hoverShow hoverShow01">
-                    <li><a href="services/journal-services.html">Journal Services</a></li>
+                    <li><NavLink to="/services/journal-services">Journal Services</NavLink></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li className=""><a href="pricing.html">Pricing</a></li>
-            <li className=""><a href="payment.html">Payment</a></li>
-            <li className=""><a href="pastperformance.html">Past Performance</a></li>
-            <li className=""><a href="career.html">Career</a></li>
+            <li className=""><NavLink to="/features">Features</NavLink></li>
+            <li className=""><NavLink to="/feedback">Feedback</NavLink></li>
+            <li className=""><NavLink to="/ourblogs">Our Blogs</NavLink></li>
             <li className="dropdown">
-              <a href="#" className="dropdown-toggle">More <b className="caret"></b></a>
+              <NavLink to="#" className="dropdown-toggle">More <b className="caret"></b></NavLink>
               <ul className="dropdown-menu">
-                <li><a href="TermConditions.html">Terms &amp; Condition</a></li>
-                <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                <li><a href="service-agreement.html">Service Agreement</a></li>
-                <li><a href="kyc.html">Kyc Form</a></li>
-                <li><a href="riskprofile.html">Risk profile</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="Compliance.html">Compliance</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="disclosure.html">Disclosure</a></li>
-                <li><a href="investor.html">Investor Charter</a></li>
               </ul>
             </li>
-            <li className="quote-btn"><a className="btn" href="expertAdv.html"> Expert Advice </a></li>
           </ul>
         </nav>
       </div>
