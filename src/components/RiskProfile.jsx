@@ -13,27 +13,27 @@ const RiskProfile = () => {
 
     // This effect calculates the risk score whenever form values change
     useEffect(() => {
-        let score = 0;
-        const questions = [
-            'agegroup', 'invgoal', 'occupation', 'income', 'trading',
-            'preftrading', 'tradingexp', 'quitexp', 'debt', 'fund',
-            'depend', 'emerfund', 'tolerance', 'equity', 'comminves',
-            'volatile', 'highrisk', 'involvement', 'investment', 'pensions'
-        ];
+    let score = 0;
+    const questions = [
+        'agegroup', 'invgoal', 'occupation', 'income', 'trading',
+        'preftrading', 'tradingexp', 'quitexp', 'debt', 'fund',
+        'depend', 'emerfund', 'tolerance', 'equity', 'comminves',
+        'volatile', 'highrisk', 'involvement', 'investment', 'pensions'
+    ];
 
-        questions.forEach(qName => {
-            const selectedValue = formValues[qName];
-            if (selectedValue) {
-                // Find the data-val for the selected radio button
-                const radioElement = document.querySelector(`input[name="${qName}"][value="${selectedValue}"]`);
-                if (radioElement) {
-                    score += parseInt(radioElement.dataset.val || '0', 10);
-                }
-            }
-        });
+    questions.forEach(qName => {
+        const selectedValue = formValues[qName];
+        if (selectedValue && !isNaN(parseInt(selectedValue, 10))) {
+            score += parseInt(selectedValue, 10);
+        }
+    });
+
+    // Only update if score has actually changed
+    if (score !== totalRiskScore) {
         setTotalRiskScore(score);
         determineRiskProfile(score);
-    }, [formValues]); // Re-run when formValues change
+    }
+}, [formValues]);
 
     const determineRiskProfile = (score) => {
         let profile = '';
