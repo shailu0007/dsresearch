@@ -21,6 +21,7 @@ import Contact from "../components/Contact.jsx";
 import Disclosure from "../components/Disclosure.jsx";
 import Investor from "../components/Investor.jsx";
 import ExpertAdvice from "../components/ExpertAdice.jsx";
+import Auth from "../components/client/Auth.jsx";
 
 const router = createBrowserRouter([
   
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
          { path: "expertAdvice", element: <ExpertAdvice /> },
     ],
   },
+  { path: "auth", element: <Auth /> },
 ]);
 
 const AppRoutes = () => <RouterProvider router={router} />;
