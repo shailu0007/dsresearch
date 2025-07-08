@@ -28,6 +28,7 @@ import PricingSub from "../components/subcomponent/PricingSub";
 import servicedeails from "../components/details/serviceDetails";
 import pricingDetails from "../components/details/pricingDetails";
 import Pastperformance from "../components/Pastperformance";
+import Career from "../components/Career";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +74,8 @@ const router = createBrowserRouter([
       { path: "disclosure", element: <Disclosure /> },
       { path: "investor-charter", element: <Investor /> },
       { path: "expertAdvice", element: <ExpertAdvice /> },
-      { path:"pastperformance", element: <Pastperformance/>}
+      { path:"pastperformance", element: <Pastperformance/>},
+      { path: "Career", element: <Career/>}
     ],
   },
 ]);
