@@ -48,7 +48,7 @@ const ContactSection = () => {
             <i className="fa fa-map-marker fa-2x mb-2 d-block"></i>
             <h4 style={{ margin: '10px 0' }}>Location</h4>
             <p style={{ fontSize: '14px' }}>
-              Eminent Investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (MP) 456001
+              D.S Researech Investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (MP) 456001
             </p>
             <div className="mt-3">
               <a href="#" className="me-3 text-dark">

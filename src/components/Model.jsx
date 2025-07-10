@@ -78,10 +78,10 @@ const Model = () => {
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <p className="lead">Eminent Research </p>
+                                    <p className="lead">D.S Researech Research </p>
                                     <ul className="list-unstyled" style={{ lineHeight: 2 }}>
                                         <li>
-                                            Want to learn how to manage the trading risks and benefits effectively? Want to know how to invest and trade in the Indian financial market? Then come to Eminent Research Investment advisors.
+                                            Want to learn how to manage the trading risks and benefits effectively? Want to know how to invest and trade in the Indian financial market? Then come to D.S Researech Research Investment advisors.
                                         </li>
                                         <li>
                                             <a href="index.php/Home/about.html"><u>Learn more</u></a>
@@ -92,7 +92,7 @@ const Model = () => {
                             <p className="note">
                                 <b>Kindly Note:</b>{" "}
                                 <span>
-                                    If any DND Customer Fill our Form then Eminent Research is authorised to Call and Messages Him/Her
+                                    If any DND Customer Fill our Form then D.S Researech Research is authorised to Call and Messages Him/Her
                                 </span>
                             </p>
                         </div>

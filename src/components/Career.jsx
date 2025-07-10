@@ -120,7 +120,7 @@ export default function Career() {
         <div style={styles.subtextContainer}>
           <h2 style={styles.subheading}>Why choose us as a career...</h2>
           <p style={styles.paragraph}>
-            Eminent Research is one of the fastest-growing companies in financial markets research and is looking for dynamic,
+            D.S Researech Research is one of the fastest-growing companies in financial markets research and is looking for dynamic,
             talented, and skilled individuals who can take up new challenges and have passion.
           </p>
         </div>

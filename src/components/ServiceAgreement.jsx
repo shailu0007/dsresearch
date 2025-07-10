@@ -35,7 +35,7 @@ const ServiceAgreement = () => {
 
 
     return (
-        <section className="bgcolor">
+        <section>
             <div className="container">
                 <div className="row">
                     <div className="col-md-1"></div>
@@ -56,7 +56,7 @@ const ServiceAgreement = () => {
                                         className={errors.date1 ? 'under error-border' : 'under'}
                                     />
                                     {errors.date1 && <span className="error-message">{errors.date1.message}</span>}
-                                    (date) between Shivangi Chandel Investment Adviser (Eminent Investment Advisor), which is a SEBI registered Investment Adviser having registration number INA000010104 dated March 20, 2018 and having its office at 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (M.P.) 456001 here in after called the Investment Adviser
+                                    (date) between Shivangi Chandel Investment Adviser (D.S Researech Investment Advisor), which is a SEBI registered Investment Adviser having registration number INA000010104 dated March 20, 2018 and having its office at 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (M.P.) 456001 here in after called the Investment Adviser
                                 </p>
                                 <br />
                                 <center><b>AND</b></center>
@@ -91,7 +91,7 @@ const ServiceAgreement = () => {
 
                                 <p><b>1.Appointment of the Investment Adviser</b></p>
 
-                                <p style={{ paddingLeft: '20px' }}>In accordance with the applicable laws, client hereby appoints, entirely at his / her / its risk, Shivangi Chandel Investment Adviser (Eminent Investment Advisor)to provide Investment Advisory services in accordance with the terms and conditions of the agreement as mandated under Regulation19(1)(d) of the Securities and Exchange Board of India (Investment Advisers) Regulations, 2013.</p>
+                                <p style={{ paddingLeft: '20px' }}>In accordance with the applicable laws, client hereby appoints, entirely at his / her / its risk, Shivangi Chandel Investment Adviser (D.S Researech Investment Advisor)to provide Investment Advisory services in accordance with the terms and conditions of the agreement as mandated under Regulation19(1)(d) of the Securities and Exchange Board of India (Investment Advisers) Regulations, 2013.</p>
 
                                 <p><b>2.Consent of theclient</b></p>
 

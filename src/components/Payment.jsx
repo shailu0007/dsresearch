@@ -35,7 +35,7 @@ export default function BankDetails() {
     '20': {
       img: cup,
       bankName: 'INDUSIND BANK LTD',
-      holder: 'EMINENT INVESTMENT ADVISORS',
+      holder: 'D.S Researech INVESTMENT ADVISORS',
       acc: '201002290851',
       type: 'CURRENT ACCOUNT',
       branch: 'FREEGANJ, UJJAIN',
@@ -44,7 +44,7 @@ export default function BankDetails() {
     '25': {
       img: cup,
       bankName: 'State Bank Of India',
-      holder: 'EMINENT INVESTMENT ADVISORS',
+      holder: 'D.S Researech INVESTMENT ADVISORS',
       acc: '37716148534',
       type: 'CURRENT ACCOUNT',
       branch: 'FREEGANJ, UJJAIN',

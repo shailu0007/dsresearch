@@ -12,9 +12,19 @@ const Navbar = () => {
       label: "Services",
       path: "/services",
       subMenu: [
-        { label: "Consulting", path: "/services/consulting" },
-        { label: "Development", path: "/services/development" },
-        { label: "Support", path: "/services/support" },
+        { label: "Stock-cash-regular", path: "/services/stock-cash-regular" },
+        { label: "Stock-future-positional", path: "/services/stock-future-positional" },
+        { label: "Stock-future-signature", path: "/services/stock-future-signature" },
+        { label: "Stock-future-positional", path: "/services/stock-future-positional" },
+        { label: "Stock-future-regular", path: "/services/stock-future-regular" },
+        { label: "Nifty-support", path: "/services/nifty-support" },
+        { label: "Index-platinum", path: "/services/index-platinum" },
+        { label: "Stock-option-regular", path: "/services/stock-option-regular" },
+        { label: "Stock-option-signature", path: "/services/index-platinum" },
+        { label: "All-mcx", path: "/services/all-mcx" },
+        { label: "All-agri-product", path: "/services/all-agri-product" },
+        { label: "Journal-services", path: "/services/journal-services" },
+        // { label: "index-platinum", path: "/services/index-platinum" },
       ],
     },
     { label: "Our Blogs", path: "/ourblogs" },
@@ -27,10 +37,18 @@ const Navbar = () => {
       label: "More",
       path: "#",
       subMenu: [
+        // { label: "Feedback", path: "/feedback" },
+        { label: "Terms-and-condition", path: "/terms-and-condition" },
+        { label: "Privacy Policy", path: "/privacy-and-policy" },
+        { label: "Service-agreement", path: "/service-agreement" },
+        { label: "Kyc", path: "/kyc" },
+        { label: "Risk Profile", path: "/risk-profile" },
         { label: "FAQ", path: "/faq" },
-        { label: "Terms & Conditions", path: "/terms" },
-        { label: "Privacy Policy", path: "/privacy" },
-        { label: "Testimonials", path: "/testimonials" },
+        { label: "Compliance", path: "/compliance" },
+        { label: "Contact", path: "/contact" },
+        { label: "Disclosure", path: "/disclosure" },
+        { label: "Investor Charter", path: "/investor-charter" },
+        { label: "Expert Advice", path: "/expertAdvice" },
       ],
     },
   ];
@@ -158,7 +176,7 @@ const Navbar = () => {
       {/* Styles */}
       <style>{`
         .main-navbar {
-          background: #fefefe;
+          background: #eeeeee;
           border-bottom: 1px solid #eaeaea;
           font-family: 'Inter', sans-serif;
         }

@@ -71,7 +71,7 @@ const PageHeader = () => {
         </a>
       </div>
       <div className="navbar navbar-primary">
-        <div className="container containerChange01">
+        <div className="container containerChange01" style={{padding:'0',width:'100%'}}>
           <a className="navbar-brand" href="index.html">
             <img className="logo logo-dark" alt="" src="assets/img/enment_logo.png" />
             <img className="logo logo-light" alt="" src="assets/img/enment_logo.png" />
@@ -79,7 +79,7 @@ const PageHeader = () => {
           <div className="navbar-header">
             <button
               type="button"
-              className="navbar-toggle collapsed"
+              className="D.S Researech"
               data-toggle="collapse"
               data-target="#mainnav"
               aria-expanded="false"

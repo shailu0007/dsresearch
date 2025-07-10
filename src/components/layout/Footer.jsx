@@ -6,7 +6,7 @@ const Footer = () => (
       <div className="footer-contact new-contact-sebi">
         <div className="row">
           <div className="col-sm-12" style={{ marginBottom: 30 }}>
-            <h5 className="mar-b-10 text-center"><b>Shivangi Chandel Investment Adviser (Eminent Investment Advisor)</b></h5>
+            <h5 className="mar-b-10 text-center"><b>Shivangi Chandel Investment Adviser (D.S Researech Investment Advisor)</b></h5>
             <p className="text-center">SEBI Registered Investment Advisers Registration No. INA000010104</p>
             <p className="text-center">(Type of Registration- Individual, Validity of Registration- 20.03.2018 to Perpetual)</p>
             <p className="text-center">Address : 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (M.P.) 456001</p>
@@ -25,8 +25,8 @@ const Footer = () => (
             <div className="mar-b-30">
               <h4 className="mar-b-20"><b>About us</b></h4>
               <p className="mar-tb-10">
-                <strong>Eminent Investment Advisors</strong>&nbsp;is an SEBI registered&nbsp;one of the leading Stock Advisory Company in Stock and Commodity Market. Our strong hold in providing the most accurate Tips makes us stand apart from our competitors.<br />
-                <strong>Eminent investm </strong>
+                <strong>D.S Researech Investment Advisors</strong>&nbsp;is an SEBI registered&nbsp;one of the leading Stock Advisory Company in Stock and Commodity Market. Our strong hold in providing the most accurate Tips makes us stand apart from our competitors.<br />
+                <strong>D.S Researech investm </strong>
               </p>
               <a className="read-more-btn" href="aboutus.html"><b>READ MORE</b></a>
             </div>
@@ -80,7 +80,7 @@ const Footer = () => (
               <div className="left-area"><i className="fa fa-home"></i></div>
               <div className="right-area">
                 <h5 className="mar-b-10"><b>Visit Us</b></h5>
-                <p>Eminent investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School,  Ujjain (MP) 456001</p>
+                <p>D.S Researech investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School,  Ujjain (MP) 456001</p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <p className="copyright">© 2018 all rights reserved Eminent Research.co</p>
+      <p className="copyright">© 2018 all rights reserved D.S Researech Research.co</p>
     </div>
   </footer>
 )

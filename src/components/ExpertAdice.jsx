@@ -34,7 +34,7 @@ const ExpertAdvice = () => {
             <span>Get Expert Advice Right Now</span>
           </h1>
           <p className="freee">
-            Eminent Research service acts as a guide in delivering trading tips
+            D.S Researech Research service acts as a guide in delivering trading tips
             to traders looking to trade in the Indian financial market. Our
             highly insightful and constantly updated track sheets, stock
             reports, and commodity reports are available on our website.

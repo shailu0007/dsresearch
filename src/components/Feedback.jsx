@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const testimonials = [
   {
-    text: "I would like to thank Eminent Research to suggest me on Signature services. Also, I would like to give a special thank you for your valuable recommendations for my investment.",
+    text: "I would like to thank D.S Researech Research to suggest me on Signature services. Also, I would like to give a special thank you for your valuable recommendations for my investment.",
     img: "uploads/tesimonials/dummy.png",
     name: "Vijay Singh",
     role: "Trader"
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Trader"
   },
   {
-    text: "I am completely satisfied with Eminent Research's Basic Stock Cash Services. I appreciate the research team and executive support.",
+    text: "I am completely satisfied with D.S Researech Research's Basic Stock Cash Services. I appreciate the research team and executive support.",
     img: "uploads/tesimonials/index.html", // intentionally broken
     name: "Mr. Das",
     role: "Trader"
