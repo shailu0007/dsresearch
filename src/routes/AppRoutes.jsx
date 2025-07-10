@@ -30,7 +30,7 @@ import Pastperformance from "../components/Pastperformance";
 import Career from "../components/Career";
 import servicedeails from "../components/details/serviceDetails.js";
 import Auth from "../components/client/Auth.jsx";
-import PrivateClientRoute from "./PrivateCientRoute";
+import PrivateClientRoute from "../components/client/PrivateClientRoute.jsx";
 import Dashboard from "../components/client/Dashboard";
 import AdminLogin from "../components/admin/AdminLogin.jsx";
 import AdminDashboard from "../components/admin/AdminDashboard.jsx";

@@ -129,7 +129,7 @@
 .services-section{
 	position:relative;
 	padding:50px 0px 50px;
-  background-color: #ffffff;
+  background-color: #eeeeee;
 background-image: url("../../../www.transparenttextures.com/patterns/brick-wall.png");
   z-index: 0;
 }
@@ -167,7 +167,7 @@ background-image: url("../../../www.transparenttextures.com/patterns/brick-wall.
 }
 
 .services-block .inner-box:hover h3 a {
-  color: #1abc9c;
+  color: #444444;
 }
 
 .services-block .inner-box .icon-boxx {
@@ -185,12 +185,12 @@ background-image: url("../../../www.transparenttextures.com/patterns/brick-wall.
 }
 
 .services-block .inner-box h3 a {
-  color: #2f2f2f;
+  color:rgb(25, 60, 200);
   transition: all 0.3s ease;
 }
 
 .services-block .inner-box h3 a:hover {
-  color: #9cc327;
+  color: #454c5fbd;
 }
 
 .services-block .inner-box .text {

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Scale } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const navigate = useNavigate();
   // State to manage whether the form is in login or signup mode
   const [isLoginMode, setIsLoginMode] = useState(true);
   // State to manage loading status during API calls
@@ -147,8 +145,7 @@ const Auth = () => {
       });
 
       console.log('Login successful:', response.data);
-      localStorage.setItem('token', response.data.token);
-       navigate('/dashboard'); 
+      setMessage({ text: 'Login successful! Welcome to StockPro', type: 'success' });
 
       // Reset form
       setLoginForm({ email: '', password: '' });
@@ -197,7 +194,7 @@ if (user) {
 }
 
       console.log('Signup successful:', response.data);
-      navigate('/dashboard'); // Redirect to dashboard after successful signup
+      setMessage({ text: 'Account created successfully! Please verify your email.', type: 'success' });
 
       // Reset form
       setSignupForm({
@@ -407,7 +404,7 @@ if (user) {
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
-        <div style={logoStyle}>📈 D.S Research</div>
+        <div style={logoStyle}>📈 StockPro</div>
         <div style={subtitleStyle}>
           Professional Stock Trading Platform
         </div>

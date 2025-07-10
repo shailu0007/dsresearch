@@ -22,4 +22,3 @@ export const logout = () => {
   localStorage.removeItem('role');
   window.location.href = '/auth';
 };
-

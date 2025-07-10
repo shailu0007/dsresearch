@@ -108,7 +108,7 @@ const OurBlogs = () => {
   const [activePost, setActivePost] = useState(null);
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', padding: '60px 20px' }}>
+    <div style={{ minHeight: '100vh', padding: '60px 20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -145,7 +145,7 @@ const OurBlogs = () => {
           <div style={{ 
             width: '100px', 
             height: '4px', 
-            background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)', 
+            background: 'linear-gradient(135deg,rgb(14, 56, 123) 0%, #1e40af 100%)', 
             margin: '0 auto',
             borderRadius: '2px'
           }}></div>
@@ -252,7 +252,7 @@ const OurBlogs = () => {
                 <h2 style={{
                   fontSize: '20px',
                   fontWeight: 'bold',
-                  color: '#1e293b',
+                  color: '#193cc8',
                   marginBottom: '12px',
                   lineHeight: '1.3',
                   transition: 'color 0.3s ease'

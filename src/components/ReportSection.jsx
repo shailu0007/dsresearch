@@ -24,7 +24,7 @@ const ReportSection = () => {
   ];
 
   const sectionStyle = {
-    background: 'linear-gradient(to right, #2cdd9b 0%, #1dc8cd 100%)',
+    background: 'linear-gradient(to right, #ffffff 30%,#ffffff 80%)',
     padding: '3rem 0',
     minHeight: 'auto'
   };
@@ -49,7 +49,7 @@ const ReportSection = () => {
   const headingStyle = {
     fontSize: '2.875rem',
     fontWeight: 'bold',
-    color: '#1f2937',
+    color: '#193cc8',
     marginBottom: '1.5rem',
     textAlign: 'center',
     borderBottom: '2px solid rgb(44, 45, 46)',
@@ -57,12 +57,12 @@ const ReportSection = () => {
 
   const cardStyle = {
     width: '100%',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#eeeeee',
     borderRadius: '0.75rem',
     boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
     padding: '1.5rem',
     border: '1px solid #e5e7eb',
-    height: '500px',
+    height: '400px',
     overflow: 'hidden',
     transition: 'all 0.3s ease'
   };
@@ -71,14 +71,14 @@ const ReportSection = () => {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
     gap: '0.75rem',
-    height: '100%',
+    height: '70%',
     overflowY: 'auto',
     paddingRight: '0.5rem'
   };
 
   const trackSheetItemStyle = {
     textAlign: 'center',
-    // padding: '0.5rem',
+    padding: '0.5rem',
     borderRadius: '0.5rem',
     transition: 'background-color 0.3s ease',
     cursor: 'pointer'
@@ -206,7 +206,7 @@ const ReportSection = () => {
       }
       .cards-row {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
+        gap: 3.5rem !important;
       }
       .card {
         height: 480px !important;

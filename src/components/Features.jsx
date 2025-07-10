@@ -25,10 +25,34 @@ const Features = () => {
             }
           `}
         </style>
-        <div className="container">
+       
+        <div className="container" style={{
+          background: '#fff',
+          height: 'auto',
+          borderRadius: '10px',
+          boxShadow: 'hsla(241, 64.70%, 36.70%, 0.35) 0px 5px 15px', paddingBottom: '20px',
+        }}>
+          <div style={{textAlign:"center"}}>
+
+               <h1
+  className="heading-section"
+  style={{
+    display: 'inline-block',
+    borderRadius: '10px',
+    boxShadow: 'hsla(241, 64.7%, 36.7%, 0.35) 0px 5px 15px',
+    padding: '10px 20px',         // optional: for spacing around text
+    textAlign: 'center',          // optional: for centering text inside h1
+  }}
+>
+  Our <span>Features</span>
+</h1>
+            
+          </div>
+
+
           <div className="row">
             <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-              <h1 className="heading-section text-center">Our <span>Features</span> </h1>
+
             </div>
           </div>
           <div className="row">

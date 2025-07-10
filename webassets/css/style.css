@@ -256,7 +256,7 @@ table:last-child {
 }
 .heading-section span
 {
-  color: #1abc9c;
+  color: #193cc8;
 }
 .heading-section.color-secondary {
     color: #ED4B41
@@ -5861,9 +5861,9 @@ footer .copyright{
   width: 55%;
   padding: 80px 50px;
   z-index: 2;
-  background: rgb(38 169 155);
+  background:#eeeeee;
   color: #fff;
-  border-radius: 10px;
+  border-radius: 0px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
 }
@@ -5892,21 +5892,21 @@ footer .copyright{
 /* Badge */
 .batch {
   position: absolute;
-  top: 56%;
+  top: 60%;
   right: -69px;
-  background: #1abc9c;
+  background: #eeeeee;
   z-index: 3;
   border-radius: 50%;
   text-align: center;
   transform: translateY(-50%);
   padding: 10px;
-  box-shadow: 0px 3px 5px 0px #143b40;
+  box-shadow: 0px 5px 10px 0px #064E94;
 }
 
 .batch img {
   padding: 20px;
   border-radius: 50%;
-  border: 1px dashed #fff;
+  border: 1px dashed #064E94;
   height: 120px;
   width: 120px;
 }
@@ -5943,7 +5943,7 @@ footer .copyright{
   }
 
   .finance-left {
-   background: rgb(38 169 155);
+   background: #eeeeee;
   /* color: #fff; */
   }
 }
@@ -5980,7 +5980,7 @@ footer .copyright{
   margin-bottom: 15px;
 }
 .finance-content p{
-  color: #fff;
+  color:rgb(37, 43, 66);
       font-size: 16px;
 }
 /* .finance-content span {
