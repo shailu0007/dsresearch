@@ -25,23 +25,16 @@ import Payment from "../components/Payment";
 
 import ServiceSub from "../components/subcomponent/ServiceSub";
 import PricingSub from "../components/subcomponent/PricingSub";
-import servicedeails from "../components/details/serviceDetails";
 import pricingDetails from "../components/details/pricingDetails";
 import Pastperformance from "../components/Pastperformance";
 import Career from "../components/Career";
 import servicedeails from "../components/details/serviceDetails.js";
-import TermsAndCondition from "../components/TermsAndCondition.jsx";
-import PrivacyPolicy from "../components/PrivacyPolicy.jsx";
-import ServiceAgreement from "../components/ServiceAgreement.jsx";
-import KYC from "../components/KYC.jsx";
-import RiskProfile from "../components/RiskProfile.jsx";
-import FAQ from "../components/FAQ.jsx";
-import Compliance from "../components/Compliance.jsx";
-import Contact from "../components/Contact.jsx";
-import Disclosure from "../components/Disclosure.jsx";
-import Investor from "../components/Investor.jsx";
-import ExpertAdvice from "../components/ExpertAdice.jsx";
 import Auth from "../components/client/Auth.jsx";
+import PrivateClientRoute from "./PrivateCientRoute";
+import Dashboard from "../components/client/Dashboard";
+import AdminLogin from "../components/admin/AdminLogin.jsx";
+import AdminDashboard from "../components/admin/AdminDashboard.jsx";
+import PrivateAdminRoute from "./PrivateAdminRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +50,7 @@ const router = createBrowserRouter([
       },
 
       { path: "services", element: <Services /> },
-      {path:"payment", element: <Payment/>},
+      { path: "payment", element: <Payment /> },
 
       // Dynamically load service sub-routes
       ...servicedeails.map(({ path, stockcashregular }) => ({
@@ -87,11 +80,27 @@ const router = createBrowserRouter([
       { path: "disclosure", element: <Disclosure /> },
       { path: "investor-charter", element: <Investor /> },
       { path: "expertAdvice", element: <ExpertAdvice /> },
-      { path:"pastperformance", element: <Pastperformance/>},
-      { path: "Career", element: <Career/>}
+      { path: "pastperformance", element: <Pastperformance /> },
+      { path: "Career", element: <Career /> }
     ],
   },
   { path: "auth", element: <Auth /> },
+  {
+    path: "/dashboard",
+    element:
+      <PrivateClientRoute>
+        <Dashboard />
+      </PrivateClientRoute>
+  },
+
+  { path: "/admin/login", element: <AdminLogin /> },
+  {
+    path: "/admin/dashboard",
+    element:
+      <PrivateAdminRoute>
+        <AdminDashboard />
+      </PrivateAdminRoute>
+  }
 ]);
 
 const AppRoutes = () => <RouterProvider router={router} />;

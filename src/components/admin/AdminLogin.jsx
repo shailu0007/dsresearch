@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Scale } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const Auth = () => {
+const AdminLogin = () => {
   const navigate = useNavigate();
   // State to manage whether the form is in login or signup mode
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -140,7 +139,7 @@ const Auth = () => {
 
     try {
       // Mock API call for login (replace with your actual backend endpoint)
-      const response = await axios.post('http://localhost:3300/api/user/login', {
+      const response = await axios.post('http://localhost:3300/api/admin/login', {
         email: loginForm.email,
         password: loginForm.password,
         action: 'login'
@@ -181,17 +180,17 @@ const Auth = () => {
 
     try {
       // Mock API call for signup (replace with your actual backend endpoint)
-      const response = await axios.post('http://localhost:3300/api/user/signup', {
+      const response = await axios.post('http://localhost:3300/api/admin/login', {
         name: `${signupForm.firstName} ${signupForm.lastName}`,
         email: signupForm.email,
         phone: signupForm.phone,
         password: signupForm.password,
         action: 'signup'
       });
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('admintoken', response.data.token);
 
       console.log('Signup successful:', response.data);
-      navigate('/dashboard'); // Redirect to dashboard after successful signup
+      navigate('/admin/dashboard'); // Redirect to dashboard after successful signup
 
       // Reset form
       setSignupForm({
@@ -403,7 +402,7 @@ const Auth = () => {
       <div style={cardStyle}>
         <div style={logoStyle}>📈 D.S Research</div>
         <div style={subtitleStyle}>
-          Professional Stock Trading Platform
+          ADMIN
         </div>
 
         <div style={marketStatsStyle}>
@@ -423,7 +422,7 @@ const Auth = () => {
 
         <div>
           <h3 style={{ textAlign: 'center', marginBottom: '30px', color: '#333' }}>
-            {isLoginMode ? 'Welcome Back' : 'Create Account'}
+            Welcome Back Admin
           </h3>
 
           {/* Display general messages (success or error) */}
@@ -432,62 +431,6 @@ const Auth = () => {
               {message.text}
             </div>
           )}
-
-          {!isLoginMode && (
-            <>
-              {/* Replaced .row and .col-6 with inline flexbox for responsiveness */}
-              <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', flexWrap: 'wrap' }}>
-                <div style={{ flex: '1 1 45%' }}> {/* Approx col-6 */}
-                  <div style={formGroupStyle}>
-                    <input
-                      type="text"
-                      name="firstName"
-                      placeholder="First Name"
-                      value={signupForm.firstName}
-                      onChange={handleSignupInputChange}
-                      style={getInputStyle('firstName', false)}
-                      onFocus={() => handleInputFocus('firstName')}
-                      onBlur={handleInputBlur}
-                      required
-                    />
-                    {errors.firstName && <div style={errorTextStyle}>{errors.firstName}</div>}
-                  </div>
-                </div>
-                <div style={{ flex: '1 1 45%' }}> {/* Approx col-6 */}
-                  <div style={formGroupStyle}>
-                    <input
-                      type="text"
-                      name="lastName"
-                      placeholder="Last Name"
-                      value={signupForm.lastName}
-                      onChange={handleSignupInputChange}
-                      style={getInputStyle('lastName', false)}
-                      onFocus={() => handleInputFocus('lastName')}
-                      onBlur={handleInputBlur}
-                      required
-                    />
-                    {errors.lastName && <div style={errorTextStyle}>{errors.lastName}</div>}
-                  </div>
-                </div>
-              </div>
-
-              <div style={formGroupStyle}>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={signupForm.phone}
-                  onChange={handleSignupInputChange}
-                  style={getInputStyle('phone', false)}
-                  onFocus={() => handleInputFocus('phone')}
-                  onBlur={handleInputBlur}
-                  required
-                />
-                {errors.phone && <div style={errorTextStyle}>{errors.phone}</div>}
-              </div>
-            </>
-          )}
-
           <div style={formGroupStyle}>
             <input
               type="email"
@@ -526,38 +469,12 @@ const Auth = () => {
             {errors.password && <div style={errorTextStyle}>{errors.password}</div>}
           </div>
 
-          {!isLoginMode && (
-            <div style={formGroupStyle}>
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={signupForm.confirmPassword}
-                onChange={handleSignupInputChange}
-                style={getInputStyle('confirmPassword', false)}
-                onFocus={() => handleInputFocus('confirmPassword')}
-                onBlur={handleInputBlur}
-                required
-              />
-              <button
-                type="button"
-                style={eyeButtonStyle}
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                aria-label={showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'}
-              >
-                {showConfirmPassword ? '🙈' : '👁️'}
-              </button>
-              {errors.confirmPassword && <div style={errorTextStyle}>{errors.confirmPassword}</div>}
-            </div>
-          )}
 
-          {isLoginMode && (
             <div style={{ textAlign: 'right', marginBottom: '20px' }}>
               <a href="#" style={toggleLinkStyle}>
                 Forgot Password?
               </a>
             </div>
-          )}
 
           <button
             type="submit"
@@ -574,65 +491,13 @@ const Auth = () => {
             }
           </button>
 
-          <div style={{ textAlign: 'center', marginTop: '25px', color: '#666' }}>
-            {isLoginMode ? "Don't have an account? " : "Already have an account? "}
-            <span
-              style={toggleLinkStyle}
-              onClick={toggleMode}
-            >
-              {isLoginMode ? 'Sign Up' : 'Sign In'}
-            </span>
-          </div>
 
-          {isLoginMode && (
-            <div style={{ textAlign: 'center', marginTop: '25px' }}>
-              <div style={{ color: '#999', marginBottom: '15px' }}>Or continue with</div>
-              <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-                <button
-                  type="button"
-                  style={{
-                    padding: '10px 20px',
-                    border: '2px solid #e1e5e9',
-                    borderRadius: '8px',
-                    background: 'white',
-                    cursor: 'pointer',
-                    fontSize: '18px'
-                  }}
-                >
-                  🔍 Google
-                </button>
-                <button
-                  type="button"
-                  style={{
-                    padding: '10px 20px',
-                    border: '2px solid #e1e5e9',
-                    borderRadius: '8px',
-                    background: 'white',
-                    cursor: 'pointer',
-                    fontSize: '18px'
-                  }}
-                >
-                  📘 Facebook
-                </button>
-              </div>
-            </div>
-          )}
+           
         </div>
 
-        <div style={{
-          marginTop: '30px',
-          padding: '15px',
-          background: 'rgba(102, 126, 234, 0.05)',
-          borderRadius: '8px',
-          fontSize: '0.9rem',
-          color: '#666',
-          textAlign: 'center'
-        }}>
-          🔒 Your data is encrypted and secure
-        </div>
       </div>
     </div>
   );
 };
 
-export default Auth;
+export default AdminLogin;
