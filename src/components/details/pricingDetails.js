@@ -1,5 +1,5 @@
 const pricingDetails = [
-    {  path: "stock-cash-regular",
+    {  path: "Stock-cash-regular",
        stockCashServices :
        {
         table : {

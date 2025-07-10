@@ -12,7 +12,7 @@ function App() {
   const isHome = location.pathname === '/' || location.pathname.startsWith('/home');
 
   return (
-    <div className="site-body style-v1">
+    <div className="site-body style-v1" style={{background:'#eeeeee'}}>
       {isHome ? <Header /> : <PageHeader />}
       <div  style={{ marginTop: "2em", marginBottom: "10em" }}>
       <Outlet />

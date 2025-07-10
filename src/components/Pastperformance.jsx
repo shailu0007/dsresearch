@@ -70,14 +70,14 @@ const Pastperformance = () => {
   };
 
   const sectionStyle = {
-    background: "#fff",
+    background: "#eeeeee",
     padding: "3rem 0",
   };
 
   const cardStyle = {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#eeeeee",
     borderRadius: "0.75rem",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+    boxShadow: "0 10px 25px hsla(221, 69.70%, 47.80%, 0.38)",
     padding: "1.5rem",
     border: "1px solid #e5e7eb",
     height: "auto",
@@ -85,12 +85,13 @@ const Pastperformance = () => {
   };
 
   const headingStyle = {
-    fontSize: "2rem",
+    fontSize: "3rem",
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: "1rem",
     borderBottom: "2px solid #333",
     paddingBottom: "0.5rem",
+    color:"#193cc8"
   };
 
   const downloadButtonStyle = {

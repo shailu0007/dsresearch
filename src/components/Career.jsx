@@ -13,7 +13,7 @@ export default function Career() {
       fontFamily: "Arial, sans-serif",
       color: "#333",
       padding: "2rem 1rem",
-      background: "#f7f9fc",
+      background: "#eeeeee",
     },
     heading: {
       fontSize: "2rem",
@@ -22,7 +22,7 @@ export default function Career() {
       color: "#1a202c",
     },
     subtextContainer: {
-      maxWidth: "900px",
+      maxWidth: "1000px",
       margin: "2rem auto",
       background: "#fff",
       padding: "2rem",
@@ -30,12 +30,12 @@ export default function Career() {
       boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
     },
     subheading: {
-      fontSize: "1.5rem",
-      marginBottom: "0.5rem",
-      color: "#2d3748",
+      fontSize: "2.5rem",
+      marginBottom: "1.9rem",
+      color: "#198cc8",
     },
     paragraph: {
-      fontSize: "1rem",
+      fontSize: "2rem",
       lineHeight: 1.6,
       color: "#4a5568",
     },
@@ -43,7 +43,7 @@ export default function Career() {
       background: "#fff",
       padding: "2rem",
       borderRadius: "12px",
-      boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
+      boxShadow: "0 8px 24px rgba(23, 55, 124, 0.34)",
       maxWidth: "900px",
       margin: "2rem auto",
     },
