@@ -8,7 +8,7 @@ const CallArea = () => {
           padding: 30px 0px;
           position: relative;
           overflow: hidden;
-          background: #222;
+          background:rgba(25, 60, 200, 0.91);
         }
 
         .callarea_wrapper:before {
@@ -16,7 +16,7 @@ const CallArea = () => {
           content: "";
           width: 60%;
           height: 100%;
-          background: #000;
+          background:rgb(25, 60, 200);
           transform: rotate(18deg) scaleY(3.5) translate(-47px);
           top: 0;
           left: 0;
@@ -74,7 +74,7 @@ const CallArea = () => {
         }
 
         .callarea_call a:hover {
-          color: #007bb6;
+          color: rgb(37, 43, 66);
         }
 
         @media (max-width: 768px) {

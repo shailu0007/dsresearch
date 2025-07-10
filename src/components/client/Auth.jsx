@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Scale } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const navigate = useNavigate();
   // State to manage whether the form is in login or signup mode
   const [isLoginMode, setIsLoginMode] = useState(true);
   // State to manage loading status during API calls
@@ -140,15 +138,14 @@ const Auth = () => {
 
     try {
       // Mock API call for login (replace with your actual backend endpoint)
-      const response = await axios.post('http://localhost:3300/api/user/login', {
+      const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
         email: loginForm.email,
         password: loginForm.password,
         action: 'login'
       });
 
       console.log('Login successful:', response.data);
-      localStorage.setItem('token', response.data.token);
-       navigate('/dashboard'); 
+      setMessage({ text: 'Login successful! Welcome to StockPro', type: 'success' });
 
       // Reset form
       setLoginForm({ email: '', password: '' });
@@ -181,17 +178,17 @@ const Auth = () => {
 
     try {
       // Mock API call for signup (replace with your actual backend endpoint)
-      const response = await axios.post('http://localhost:3300/api/user/signup', {
-        name: `${signupForm.firstName} ${signupForm.lastName}`,
+      const response = await axios.post('https://jsonplaceholder.typicode.com/users', {
+        firstName: signupForm.firstName,
+        lastName: signupForm.lastName,
         email: signupForm.email,
         phone: signupForm.phone,
         password: signupForm.password,
         action: 'signup'
       });
-      localStorage.setItem('token', response.data.token);
 
       console.log('Signup successful:', response.data);
-      navigate('/dashboard'); // Redirect to dashboard after successful signup
+      setMessage({ text: 'Account created successfully! Please verify your email.', type: 'success' });
 
       // Reset form
       setSignupForm({
@@ -401,7 +398,7 @@ const Auth = () => {
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
-        <div style={logoStyle}>📈 D.S Research</div>
+        <div style={logoStyle}>📈 StockPro</div>
         <div style={subtitleStyle}>
           Professional Stock Trading Platform
         </div>

@@ -69,8 +69,8 @@ const Services = () => {
       <section className="services-section">
         <div className="auto-container">
           <div className="sec-title centered">
-            <h1 className="heading-section">
-              Our Best <span>Services</span>
+            <h1 className="heading-section" style={{color:'rgb(25, 60, 200)'}}>
+              Our Best <span style={{color:'#000000'}}>Services</span>
             </h1>
           </div>
 
