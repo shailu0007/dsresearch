@@ -18,7 +18,7 @@ const Disclosure = () => {
             <ul style={{ listStyleType: 'circle' }}>
               <li>
                 We are a SEBI Registered Investment Adviser having registration number –
-                INA000010104.
+                INH000017824.
               </li>
               <li>
                 We are not affiliated with any other intermediaries, nor do receive any brokerage
@@ -106,7 +106,7 @@ const Disclosure = () => {
               <b>Email Id: </b>compliance@eminentresearch.co
             </p>
             <p>
-              <b>Phone No : </b>9340546337
+              <b>Phone No : </b>8370039800
             </p>
           </div>
         </div>

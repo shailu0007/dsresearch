@@ -33,7 +33,7 @@ const ContactSection = () => {
           <div style={{ padding: 20, border: '1px solid #eee', borderRadius: 10 }}>
             <i className="fa fa-phone fa-2x mb-2 d-block"></i>
             <h4 style={{ margin: '10px 0' }}>Phone Number</h4>
-            <p>93405-46337</p>
+            <p>83700-39800</p>
           </div>
         </div>
         <div className="col-md-4 mb-4">
@@ -48,7 +48,7 @@ const ContactSection = () => {
             <i className="fa fa-map-marker fa-2x mb-2 d-block"></i>
             <h4 style={{ margin: '10px 0' }}>Location</h4>
             <p style={{ fontSize: '14px' }}>
-              D.S Researech Investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (MP) 456001
+              D.S Researech Investment Advisors, 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P), Ujjain (MP) 456001
             </p>
             <div className="mt-3">
               <a href="#" className="me-3 text-dark">

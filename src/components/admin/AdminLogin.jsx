@@ -400,7 +400,7 @@ const AdminLogin = () => {
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
-        <div style={logoStyle}>📈 D.S Research</div>
+        <div style={logoStyle}>📈 D.S Research   </div>
         <div style={subtitleStyle}>
           ADMIN
         </div>

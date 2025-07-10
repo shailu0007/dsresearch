@@ -6,15 +6,15 @@ const Footer = () => (
       <div className="footer-contact new-contact-sebi">
         <div className="row">
           <div className="col-sm-12" style={{ marginBottom: 30 }}>
-            <h5 className="mar-b-10 text-center"><b>Shivangi Chandel Investment Adviser (D.S Researech Investment Advisor)</b></h5>
-            <p className="text-center">SEBI Registered Investment Advisers Registration No. INA000010104</p>
+            <h5 className="mar-b-10 text-center"><b>D.S Research   Investment Adviser (D.S Researech Investment Advisor)</b></h5>
+            <p className="text-center">SEBI Registered Investment Advisers Registration No. INH000017824</p>
             <p className="text-center">(Type of Registration- Individual, Validity of Registration- 20.03.2018 to Perpetual)</p>
-            <p className="text-center">Address : 96 Laal Bahadur Shastri Marg, Near Model School, Ujjain (M.P.) 456001</p>
-            <p className="text-center">Contact No : +91 9340546337</p>
+            <p className="text-center">Address : 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P), Ujjain (M.P.) 456001</p>
+            <p className="text-center">Contact No : +91 8370039800</p>
             <p className="text-center">Email : info@eminentresearch.co</p>
             <p className="text-center">SEBI regional/local office address : Indore Local Office</p>
-            <p className="text-center">Address : 104-105, Satguru Parinay, Opposite C-21 Mall, A.B. Road, Indore - 452010, Madhya Pradesh</p>
-            <p className="text-center">Tel. Board : +91-0731-2557002</p>
+            <p className="text-center">10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P)</p>
+            <p className="text-center">Tel. Board : N/A</p>
             <p className="text-center">E-mail : indore-lo@sebi.gov.in</p>
           </div>
         </div>
@@ -80,7 +80,7 @@ const Footer = () => (
               <div className="left-area"><i className="fa fa-home"></i></div>
               <div className="right-area">
                 <h5 className="mar-b-10"><b>Visit Us</b></h5>
-                <p>D.S Researech investment Advisors, 96 Laal Bahadur Shastri Marg, Near Model School,  Ujjain (MP) 456001</p>
+                <p>D.S Researech investment Advisors, 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P),  Ujjain (MP) 456001</p>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Footer = () => (
               <div className="left-area"><i className="fa fa-phone"></i></div>
               <div className="right-area">
                 <h5 className="mar-b-10"><b>Call Us</b></h5>
-                <p>93405-46337</p>
+                <p>83700-39800</p>
               </div>
             </div>
           </div>

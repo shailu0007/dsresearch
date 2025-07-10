@@ -121,7 +121,7 @@ const Compliance = () => {
                   <td style={cellStyle}>
                     28 Sarthak Nagar, C Sector, Ujjain, Madhya Pradesh, 456010
                   </td>
-                  <td style={cellStyle}>9340546337</td>
+                  <td style={cellStyle}>8370039800</td>
                   <td style={cellStyle}>
                     <a
                       href="mailto:shivangi.chandel12@gmail.com"

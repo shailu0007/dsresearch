@@ -27,7 +27,7 @@ const PageHeader = () => {
                 </li>
                 <li className="t-phone t-phone1">
                   <em className="fa fa-phone" aria-hidden="true"></em>
-                  <span>+91-93405-46337</span>
+                  <span>+91-83700-39800</span>
                 </li>
               </ul>
             </div>
@@ -65,9 +65,9 @@ const PageHeader = () => {
         </div>
       </div>
       <div className="serviceFix">
-        <a href="https://wa.me/+919340546337" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/+918370039800" target="_blank" rel="noopener noreferrer">
           <img src="webassets/image/approval.png" alt="" />
-          +91-93405-46337
+          +91-83700-39800
         </a>
       </div>
       <div className="navbar navbar-primary">

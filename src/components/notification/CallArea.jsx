@@ -108,8 +108,8 @@ const CallArea = () => {
             </div>
             <div className="callarea_column callarea_phone">
               <div className="callarea_call">
-                <a href="callto:+91-93405-46337">
-                  <span><i className="fa fa-phone"></i></span> +91-93405-46337
+                <a href="callto:+91-83700-39800">
+                  <span><i className="fa fa-phone"></i></span> +91-83700-39800
                 </a>
               </div>
             </div>
