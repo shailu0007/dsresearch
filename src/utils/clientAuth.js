@@ -1,32 +1,25 @@
-import { jwtDecode } from 'jwt-decode'; 
 
 export const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  if (!token) return false;
-
-  try {
-    const decoded = jwtDecode(token);
-    // Check if token is expired
-    const currentTime = Date.now() / 1000;
-    return decoded.exp > currentTime;
-  } catch (err) {
-    return false;
-  }
+  const token = localStorage.getItem('userId');
+  const role = localStorage.getItem('role');
+  if (!token && role!="user") return false;
 };
 
 export const getUserFromToken = () => {
-  const token = localStorage.getItem('token');
-  if (!token) return null;
+  const token = localStorage.getItem('userId');
+  const role = localStorage.getItem('role');
+  if (!token && role!="user") return null;
 
   try {
-    return jwtDecode(token);
+    return { token, role };
   } catch (err) {
     return null;
   }
 };
 
 export const logout = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('role');
   window.location.href = '/auth';
 };
 

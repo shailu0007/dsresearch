@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ServiceSub = ({ table, overview, feature, mediumOfCall, sampleCall }) => {
+const ServiceSub = ({ stockcashregular }) => {
+  const { table, overview, feature, mediumOfCall, sampleCall } = stockcashregular;
 
   return (
     <div className="container">

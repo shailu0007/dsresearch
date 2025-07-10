@@ -37,6 +37,7 @@ import AdminDashboard from "../components/admin/AdminDashboard.jsx";
 import PrivateAdminRoute from "./PrivateAdminRoute.jsx";
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <App />,
