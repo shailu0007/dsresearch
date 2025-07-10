@@ -139,15 +139,20 @@ const AdminLogin = () => {
 
     try {
       // Mock API call for login (replace with your actual backend endpoint)
-      const response = await axios.post('http://localhost:3300/api/admin/login', {
+      const response = await axios.post('/api/index.php?action=adminLogin', {
         email: loginForm.email,
         password: loginForm.password,
         action: 'login'
       });
+      const admin = response.data.admin;
+      if (admin) {
+        // Store user info in localStorage
+        localStorage.setItem('adminId', admin.id);
+        localStorage.setItem('adminRole', admin.role);
+      }
+      navigate('/admin/dashboard'); 
 
       console.log('Login successful:', response.data);
-      localStorage.setItem('token', response.data.token);
-       navigate('/dashboard'); 
 
       // Reset form
       setLoginForm({ email: '', password: '' });

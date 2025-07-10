@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Scale } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
+  const navigate = useNavigate();
   // State to manage whether the form is in login or signup mode
   const [isLoginMode, setIsLoginMode] = useState(true);
   // State to manage loading status during API calls
@@ -143,9 +145,18 @@ const Auth = () => {
         password: loginForm.password,
         action: 'login'
       });
+      const user = response.data.user;
+
+      if (user) {
+        // Store user info in localStorage
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('role', user.role);
+      }
+      navigate('/dashboard');
 
       console.log('Login successful:', response.data);
-      setMessage({ text: 'Login successful! Welcome to StockPro', type: 'success' });
+
+
 
       // Reset form
       setLoginForm({ email: '', password: '' });
@@ -187,11 +198,11 @@ const Auth = () => {
       });
       const user = response.data.user;
 
-if (user) {
-  // Store user info in localStorage
-  localStorage.setItem('userId', user.id);
-  localStorage.setItem('role', user.role);
-}
+      if (user) {
+        // Store user info in localStorage
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('role', user.role);
+      }
 
       console.log('Signup successful:', response.data);
       setMessage({ text: 'Account created successfully! Please verify your email.', type: 'success' });
@@ -246,7 +257,7 @@ if (user) {
   };
 
   const cardStyle = {
-    Scale:"90%",
+    Scale: "90%",
     background: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(10px)',
     borderRadius: '20px',

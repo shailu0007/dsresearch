@@ -2,7 +2,10 @@
 export const isAuthenticated = () => {
   const token = localStorage.getItem('userId');
   const role = localStorage.getItem('role');
-  if (!token && role!="user") return false;
+  if (!token && role!="user"){  
+    return false 
+  };
+  return true;
 };
 
 export const getUserFromToken = () => {
