@@ -59,11 +59,11 @@ const Navbar = () => {
 
   return (
     <nav className="main-navbar">
-      <div className="nav-container">
+      <div className="nav-container" style={{ padding: '1em 0.25em' }}>
         {/* Logo */}
         <Link to="/" className="logo-container">
           <img
-            src="../../../webassets/images/resource/blue.png"
+            src="./blue.png"
             alt="Enment Logo"
             className="site-logo"
           />

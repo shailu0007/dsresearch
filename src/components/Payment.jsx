@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import cup from "../../webassets/image/cup.png"
 
-
 export default function BankDetails() {
+  const banks = [
+    { id: '20', name: 'YES BANK' },
+  ];
+
   const [form, setForm] = useState({
-    bankId: '',
+    bankId: banks[0]?.id || '', // Initialize with first bank's ID
     name: '',
     mobile: '',
-    captcha: '',
+    email: '' // Added missing email field
   });
 
   const captchaCode = '7G4K2';
@@ -19,36 +22,22 @@ export default function BankDetails() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (form.captcha.toUpperCase() !== captchaCode) {
+    if (form.captcha && form.captcha.toUpperCase() !== captchaCode) {
       alert('Captcha is incorrect');
       return;
     }
     console.log('Submitted:', form);
   };
 
-  const banks = [
-    { id: '20', name: 'INDUSIND BANK LTD' },
-    { id: '25', name: 'State Bank Of India' },
-  ];
-
   const bankDetails = {
     '20': {
-      img: cup,
-      bankName: 'INDUSIND BANK LTD',
-      holder: 'D.S Researech INVESTMENT ADVISORS',
-      acc: '201002290851',
+      img: "./yesbankbarcode.jpeg",
+      bankName: 'YES BANK',
+      holder: 'Devendra Sahu',
+      acc: 'xxxxxxxxx',
       type: 'CURRENT ACCOUNT',
       branch: 'FREEGANJ, UJJAIN',
-      ifsc: 'INDB0000766',
-    },
-    '25': {
-      img: cup,
-      bankName: 'State Bank Of India',
-      holder: 'D.S Researech INVESTMENT ADVISORS',
-      acc: '37716148534',
-      type: 'CURRENT ACCOUNT',
-      branch: 'FREEGANJ, UJJAIN',
-      ifsc: 'SBIN0030108',
+      ifsc: 'xxxxxxxxx',
     },
   };
 
@@ -178,17 +167,15 @@ export default function BankDetails() {
           required
         />
 
-        <div style={styles.captchaGroup}>
-          <input
-            name="captcha"
-            placeholder="Enter Captcha"
-            value={form.captcha}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-          <div style={styles.captchaBox}>{captchaCode}</div>
-        </div>
+        <input
+          name="email"
+          placeholder="Email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          style={styles.input}
+          required
+        />
 
         <button type="submit" style={styles.submitBtn}>
           Submit
@@ -197,7 +184,6 @@ export default function BankDetails() {
 
       {chosen && (
         <div style={styles.card}>
-          <img src={chosen.img} alt="Bank Logo" style={{ height: 50, marginBottom: 10 }} />
           <table style={styles.table}>
             <tbody>
               <tr>
@@ -229,9 +215,7 @@ export default function BankDetails() {
 
           <div style={{ marginTop: 20 }}>
             <div style={styles.imageGallery}>
-              <img src="../../webassets/image/chart.png" alt="Doc" style={styles.image} />
-              <img src="../../webassets/image/bar-chart.png" alt="GPay" style={styles.image} />
-              <img src="../../webassets//image/approval.png" alt="QR" style={styles.image} />
+              <img src={chosen.img} alt="Doc" style={styles.image} />
             </div>
           </div>
         </div>

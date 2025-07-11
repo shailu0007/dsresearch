@@ -176,7 +176,7 @@ export default function Career() {
             <div style={styles.modalContent}>
               <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Apply Now</h3>
               <p style={{ color: "#4a5568", fontSize: "1rem" }}>
-                Send your resume to <strong>hr@eminentresearch.in</strong>
+                Send your resume to <strong>hr@D.S research.in</strong>
               </p>
               <button style={styles.closeBtn} onClick={() => setShowModal(false)}>
                 Close

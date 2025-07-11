@@ -16,7 +16,7 @@ const blogPosts = [
     title: 'Fundamental-Stock-Alert',
     date: '2020-02-20 10:16:34',
     image: image1,
-    excerpt: 'For Any Assistance Call us or Email us Email:- Info@eminentresearch.co',
+    excerpt: 'For Any Assistance Call us or Email us Email:- info@dsresearch.live',
     category: 'Stock Analysis',
     readTime: '5 min read',
     fullContent: `📈 Fundamental Stock Alert
@@ -41,7 +41,7 @@ In early 2020, our analysts identified an undervalued mid-cap stock. It had stro
 Use alerts as a guide. Combine them with your own research or consult a certified financial advisor.
 
 📩 Contact:
-- Email: info@eminentresearch.co
+- Email: info@dsresearch.live
 - Phone: +91-9999999999
 
 📢 Disclaimer: Stock market investments are subject to market risk.`
@@ -68,7 +68,7 @@ A client with a high-risk portfolio was advised to rebalance. After shifting 40%
 
 📞 Connect with us today to schedule a free consultation.
 
-Email: info@eminentresearch.co | Phone: +91-9876543210`
+Email: info@dsresearch.live | Phone: +91-9876543210`
   },
   {
     id: 3,
@@ -112,49 +112,49 @@ const OurBlogs = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <div style={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            width: '80px', 
-            height: '80px', 
-            background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)', 
-            borderRadius: '20px', 
-            marginBottom: '20px' 
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '80px',
+            height: '80px',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)',
+            borderRadius: '20px',
+            marginBottom: '20px'
           }}>
             <span style={{ fontSize: '32px', color: 'white' }}>📈</span>
           </div>
-          <h1 style={{ 
-            fontSize: '48px', 
-            fontWeight: 'bold', 
-            color: '#1e293b', 
+          <h1 style={{
+            fontSize: '48px',
+            fontWeight: 'bold',
+            color: '#1e293b',
             marginBottom: '16px',
             textShadow: '0 2px 4px rgba(0,0,0,0.1)'
           }}>
             Our <span style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Blog</span>
           </h1>
-          <p style={{ 
-            fontSize: '18px', 
-            color: '#64748b', 
-            maxWidth: '600px', 
+          <p style={{
+            fontSize: '18px',
+            color: '#64748b',
+            maxWidth: '600px',
             margin: '0 auto 24px',
             lineHeight: '1.6'
           }}>
             Discover insights, analysis, and expert advice on financial markets and investment strategies
           </p>
-          <div style={{ 
-            width: '100px', 
-            height: '4px', 
-            background: 'linear-gradient(135deg,rgb(14, 56, 123) 0%, #1e40af 100%)', 
+          <div style={{
+            width: '100px',
+            height: '4px',
+            background: 'linear-gradient(135deg,rgb(14, 56, 123) 0%, #1e40af 100%)',
             margin: '0 auto',
             borderRadius: '2px'
           }}></div>
         </div>
 
         {/* Blog Grid */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
           gap: '30px',
           marginBottom: '40px'
         }}>
@@ -199,7 +199,7 @@ const OurBlogs = () => {
                     e.target.style.transform = 'scale(1)';
                   }}
                 />
-                
+
                 {/* Category Badge */}
                 <div style={{
                   position: 'absolute',
@@ -283,12 +283,12 @@ const OurBlogs = () => {
                   cursor: 'pointer',
                   transition: 'color 0.3s ease'
                 }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#1e40af';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#3b82f6';
-                }}>
+                  onMouseEnter={(e) => {
+                    e.target.style.color = '#1e40af';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = '#3b82f6';
+                  }}>
                   <span>Read More</span>
                   <span>→</span>
                 </button>
@@ -299,7 +299,7 @@ const OurBlogs = () => {
 
         {/* Modal Popup */}
         {activePost && (
-          <div 
+          <div
             style={{
               position: 'fixed',
               top: 0,
@@ -316,7 +316,7 @@ const OurBlogs = () => {
             }}
             onClick={() => setActivePost(null)}
           >
-            <div 
+            <div
               style={{
                 background: 'white',
                 borderRadius: '20px',
@@ -347,7 +347,7 @@ const OurBlogs = () => {
                   bottom: 0,
                   background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)'
                 }} />
-                
+
                 {/* Close Button */}
                 <button
                   onClick={() => setActivePost(null)}

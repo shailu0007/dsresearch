@@ -50,23 +50,23 @@ const Compliance = () => {
 
           <p style={{ textAlign: 'justify' }}>
             <b>Level 1:</b> Clients having complaints regarding any service may email us at{' '}
-            <a href="mailto:info@eminentresearch.co.To" className="text-primary">
-              info@eminentresearch.co.To
+            <a href="mailto:info@dsresearch.live.To" className="text-primary">
+              info@dsresearch.live.To
             </a>. We will respond within 5 working days.
           </p>
 
           <p style={{ textAlign: 'justify' }}>
             <b>Level 2:</b> If unsatisfied, escalate to our Compliance Officer at{' '}
-            <a href="mailto:compliance@eminentresearch.co." className="text-primary">
-              compliance@eminentresearch.co.
+            <a href="mailto:compliance@D.S research.co." className="text-primary">
+              compliance@D.S research.co.
             </a>{' '}
             within 7 working days.
           </p>
 
           <p style={{ textAlign: 'justify' }}>
             <b>Level 3:</b> Still unsatisfied? Contact our Director at{' '}
-            <a href="mailto:Director@eminentresearch.co." className="text-primary">
-              Director@eminentresearch.co.
+            <a href="mailto:Director@D.S research.co." className="text-primary">
+              Director@D.S research.co.
             </a>{' '}
             You will get a reply within 15 working days.
           </p>
@@ -121,7 +121,7 @@ const Compliance = () => {
                   <td style={cellStyle}>
                     28 Sarthak Nagar, C Sector, Ujjain, Madhya Pradesh, 456010
                   </td>
-                  <td style={cellStyle}>8370039800</td>
+                  <td style={cellStyle}>8959322387</td>
                   <td style={cellStyle}>
                     <a
                       href="mailto:shivangi.chandel12@gmail.com"

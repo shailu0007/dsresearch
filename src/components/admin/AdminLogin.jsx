@@ -150,7 +150,7 @@ const AdminLogin = () => {
         localStorage.setItem('adminId', admin.id);
         localStorage.setItem('adminRole', admin.role);
       }
-      navigate('/admin/dashboard'); 
+      navigate('/admin/dashboard');
 
       console.log('Login successful:', response.data);
 
@@ -247,7 +247,7 @@ const AdminLogin = () => {
   };
 
   const cardStyle = {
-    Scale:"90%",
+    Scale: "90%",
     background: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(10px)',
     borderRadius: '20px',
@@ -405,7 +405,7 @@ const AdminLogin = () => {
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
-        <div style={logoStyle}>📈 D.S Research   </div>
+        <div style={logoStyle}>📈 D.S research   </div>
         <div style={subtitleStyle}>
           ADMIN
         </div>
@@ -475,11 +475,11 @@ const AdminLogin = () => {
           </div>
 
 
-            <div style={{ textAlign: 'right', marginBottom: '20px' }}>
-              <a href="#" style={toggleLinkStyle}>
-                Forgot Password?
-              </a>
-            </div>
+          <div style={{ textAlign: 'right', marginBottom: '20px' }}>
+            <a href="#" style={toggleLinkStyle}>
+              Forgot Password?
+            </a>
+          </div>
 
           <button
             type="submit"
@@ -497,7 +497,7 @@ const AdminLogin = () => {
           </button>
 
 
-           
+
         </div>
 
       </div>

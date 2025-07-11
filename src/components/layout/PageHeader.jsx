@@ -10,7 +10,7 @@ const PageHeader = () => {
             <div className="top-aside top-left">
               <ul className="top-nav">
                 <li>
-                  <a href="https://eminentresearch.co/msg/" target="_blank" rel="noopener noreferrer">CLIENT LOGIN</a>
+                  <a href="https://D.S research.co/msg/" target="_blank" rel="noopener noreferrer">CLIENT LOGIN</a>
                 </li>
                 <li>
                   <a href="offerszone.html">OFFERS ZONE</a>
@@ -22,7 +22,7 @@ const PageHeader = () => {
                 <li className="t-email t-email1">
                   <em className="fa fa-envelope-o" aria-hidden="true"></em>
                   <span>
-                    <a href="https://eminentresearch.co/msg/" target="_blank" rel="noopener noreferrer"> info@eminentresearch.co</a>
+                    <a href="https://D.S research.co/msg/" target="_blank" rel="noopener noreferrer"> info@dsresearch.live</a>
                   </span>
                 </li>
                 <li className="t-phone t-phone1">
@@ -60,18 +60,18 @@ const PageHeader = () => {
         </div>
         <div className="breadcrumb01">
           <h2>
-            <a href="http://eminentresearch.co/index.php/Home">Home</a> / About Us
+            <a href="http://D.S research.co/index.php/Home">Home</a> / About Us
           </h2>
         </div>
       </div>
       <div className="serviceFix">
-        <a href="https://wa.me/+918370039800" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/+918959322387" target="_blank" rel="noopener noreferrer">
           <img src="webassets/image/approval.png" alt="" />
           +91-83700-39800
         </a>
       </div>
       <div className="navbar navbar-primary">
-        <div className="container containerChange01" style={{padding:'0',width:'100%'}}>
+        <div className="container containerChange01" style={{ padding: '0', width: '100%' }}>
           <a className="navbar-brand" href="index.html">
             <img className="logo logo-dark" alt="" src="assets/img/enment_logo.png" />
             <img className="logo logo-light" alt="" src="assets/img/enment_logo.png" />
@@ -93,7 +93,7 @@ const PageHeader = () => {
               <a className="btn" href="#">Get Expert Advice</a>
             </div>
           </div>
-       <Navbar/>
+          <Navbar />
         </div>
       </div>
     </header>

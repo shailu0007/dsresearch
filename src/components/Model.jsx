@@ -81,7 +81,7 @@ const Model = () => {
                                     <p className="lead">D.S Researech Research </p>
                                     <ul className="list-unstyled" style={{ lineHeight: 2 }}>
                                         <li>
-                                            Want to learn how to manage the trading risks and benefits effectively? Want to know how to invest and trade in the Indian financial market? Then come to D.S Researech Research Investment advisors.
+                                            Want to learn how to manage the trading risks and benefits effectively? Want to know how to invest and trade in the Indian financial market? Then come to D.S Researech Research Investment Researcher.
                                         </li>
                                         <li>
                                             <a href="index.php/Home/about.html"><u>Learn more</u></a>

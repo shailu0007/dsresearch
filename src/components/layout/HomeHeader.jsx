@@ -21,7 +21,7 @@ const Header = () => {
               <div className="top-aside top-left">
                 <ul className="top-nav">
                   <li>
-                    <a href="https://eminentresearch.co/msg/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://D.S research.co/msg/" target="_blank" rel="noopener noreferrer">
                       CLIENT LOGIN
                     </a>
                   </li>
@@ -35,8 +35,8 @@ const Header = () => {
                   <li className="t-email t-email1">
                     <em className="fa fa-envelope-o" aria-hidden="true"></em>
                     <span>
-                      <a href="https://eminentresearch.co/msg/" target="_blank" rel="noopener noreferrer">
-                        info@eminentresearch.co
+                      <a href="https://D.S research.co/msg/" target="_blank" rel="noopener noreferrer">
+                        info@dsresearch.live
                       </a>
                     </span>
                   </li>
@@ -304,8 +304,8 @@ const Header = () => {
           </div>
         )}
         <div className="serviceFix">
-          <a href="https://wa.me/+918370039800" target="_blank" rel="noopener noreferrer">
-            <img src="webassets/image/approval.png" alt="" />
+          <a href="https://wa.me/+918959322387" target="_blank" rel="noopener noreferrer">
+            <img src="./approval.png" alt="" />
             +91-83700-39800
           </a>
         </div>

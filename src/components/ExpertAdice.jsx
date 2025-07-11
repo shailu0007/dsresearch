@@ -14,7 +14,7 @@ const ExpertAdvice = () => {
     try {
       // replace URL below with your actual endpoint
       const response = await axios.post(
-        "https://www.eminentresearch.co//home/free_trial",
+        "https://www.D.S research.co//home/free_trial",
         data
       );
       console.log("Form submitted successfully!", response.data);
@@ -41,7 +41,7 @@ const ExpertAdvice = () => {
           </p>
           <br />
           <p className="freee">
-            Kindly Note: If any DND Customer fills our form, then Eminent
+            Kindly Note: If any DND Customer fills our form, then D.S research
             Research is authorized to Call and Message him/her.
           </p>
         </div>

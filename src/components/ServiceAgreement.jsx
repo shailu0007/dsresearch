@@ -56,7 +56,7 @@ const ServiceAgreement = () => {
                                         className={errors.date1 ? 'under error-border' : 'under'}
                                     />
                                     {errors.date1 && <span className="error-message">{errors.date1.message}</span>}
-                                    (date) between D.S Research   Investment Adviser (D.S Researech Investment Advisor), which is a SEBI registered Investment Adviser having registration number INH000017824 dated March 20, 2018 and having its office at 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P), Ujjain (M.P.) 456001 here in after called the Investment Adviser
+                                    (date) between D.S research   Investment Adviser (D.S Researech Investment Advisor), which is a SEBI registered Investment Adviser having registration number INH000017824 dated March 20, 2018 and having its office at 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P), Ujjain (M.P.) 456001 here in after called the Investment Adviser
                                 </p>
                                 <br />
                                 <center><b>AND</b></center>
@@ -91,7 +91,7 @@ const ServiceAgreement = () => {
 
                                 <p><b>1.Appointment of the Investment Adviser</b></p>
 
-                                <p style={{ paddingLeft: '20px' }}>In accordance with the applicable laws, client hereby appoints, entirely at his / her / its risk, D.S Research   Investment Adviser (D.S Researech Investment Advisor)to provide Investment Advisory services in accordance with the terms and conditions of the agreement as mandated under Regulation19(1)(d) of the Securities and Exchange Board of India (Investment Advisers) Regulations, 2013.</p>
+                                <p style={{ paddingLeft: '20px' }}>In accordance with the applicable laws, client hereby appoints, entirely at his / her / its risk, D.S research   Investment Adviser (D.S Researech Investment Advisor)to provide Investment Advisory services in accordance with the terms and conditions of the agreement as mandated under Regulation19(1)(d) of the Securities and Exchange Board of India (Investment Advisers) Regulations, 2013.</p>
 
                                 <p><b>2.Consent of theclient</b></p>
 
@@ -294,7 +294,7 @@ const ServiceAgreement = () => {
 
                                 <p style={{ paddingLeft: '20px' }}>Name:Subodh Jain<br />
                                     PAN No.: ASJPJ0891P<br />
-                                    Contact details:8370039800<br />
+                                    Contact details:8959322387<br />
                                 </p>
 
                                 <p style={{ paddingLeft: '20px' }}>Obligor must take the steps including but not limited to in the event of the above eventuality:</p>

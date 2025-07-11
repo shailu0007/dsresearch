@@ -28,7 +28,7 @@ function NonIndividualKycForm() {
         console.log("Non-Individual Form Data to be sent:", Object.fromEntries(formData.entries()));
 
         try {
-            const response = await axios.post('https://www.eminentresearch.co/Webcontroller/kyc', formData, {
+            const response = await axios.post('https://www.D.S research.co/Webcontroller/kyc', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -151,9 +151,9 @@ function NonIndividualKycForm() {
                     </div>
 
                     <div className="col-sm-12">
-                        <button 
-                            id="savekyc_non" 
-                            className="btn01 ml15" 
+                        <button
+                            id="savekyc_non"
+                            className="btn01 ml15"
                             type="submit"
                             disabled={isSubmitting}
                         >

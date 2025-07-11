@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => (
   <footer>
@@ -6,12 +7,12 @@ const Footer = () => (
       <div className="footer-contact new-contact-sebi">
         <div className="row">
           <div className="col-sm-12" style={{ marginBottom: 30 }}>
-            <h5 className="mar-b-10 text-center"><b>D.S Research   Investment Adviser (D.S Researech Investment Advisor)</b></h5>
+            <h5 className="mar-b-10 text-center"><b>D.S research   Investment Adviser (D.S Researech Investment Advisor)</b></h5>
             <p className="text-center">SEBI Registered Investment Advisers Registration No. INH000017824</p>
             <p className="text-center">(Type of Registration- Individual, Validity of Registration- 20.03.2018 to Perpetual)</p>
             <p className="text-center">Address : 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P), Ujjain (M.P.) 456001</p>
-            <p className="text-center">Contact No : +91 8370039800</p>
-            <p className="text-center">Email : info@eminentresearch.co</p>
+            <p className="text-center">Contact No : +91 8959322387</p>
+            <p className="text-center">Email : info@dsresearch.live</p>
             <p className="text-center">SEBI regional/local office address : Indore Local Office</p>
             <p className="text-center">10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P)</p>
             <p className="text-center">Tel. Board : N/A</p>
@@ -25,10 +26,10 @@ const Footer = () => (
             <div className="mar-b-30">
               <h4 className="mar-b-20"><b>About us</b></h4>
               <p className="mar-tb-10">
-                <strong>D.S Researech Investment Advisors</strong>&nbsp;is an SEBI registered&nbsp;one of the leading Stock Advisory Company in Stock and Commodity Market. Our strong hold in providing the most accurate Tips makes us stand apart from our competitors.<br />
-                <strong>D.S Researech investm </strong>
+                <strong>D.S Researech Investment Researcher</strong>&nbsp;is an SEBI registered&nbsp;one of the leading Stock Advisory Company in Stock and Commodity Market. Our strong hold in providing the most accurate Tips makes us stand apart from our competitors.<br />
+                <strong>D.S Researech Investment Researcher</strong>
               </p>
-              <a className="read-more-btn" href="aboutus.html"><b>READ MORE</b></a>
+              <Link className="read-more-btn" to={"aboutus"}><b>READ MORE</b></Link>
             </div>
             <div className="sebi">
               <ul>
@@ -39,35 +40,35 @@ const Footer = () => (
           <div className="col-sm-3 col-md-3">
             <h4 className="mar-b-20"><b>important link</b></h4>
             <ul className="footer-link mar-b-30 mar-r-20">
-              <li><a href="TermConditions.html">Terms &amp; Condition</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-              <li><a href="disclaimer.html">Disclaimer</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="disclosure.html">disclosure</a></li>
-              <li><a href="investor.html">Investor Charter</a></li>
+              <li><Link to={"TermConditions"}>Terms &amp; Condition</Link></li>
+              <li><Link to={"privacypolicy"}>Privacy Policy</Link></li>
+              <li><Link to={"disclaimer"}>Disclaimer</Link></li>
+              <li><Link to={"faq"}>FAQ</Link></li>
+              <li><Link to={"disclosure"}>disclosure</Link></li>
+              <li><Link to={"investor"}>Investor Charter</Link></li>
             </ul>
             <div className="clearfix"></div>
           </div>
           <div className="col-sm-2 col-md-2">
             <h4 className="mar-b-20"><b>Quick links</b></h4>
             <ul className="footer-link mar-b-30 mar-r-20">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="services.html">service</a></li>
-              <li><a href="kyc.html">KYC Form</a></li>
-              <li><a href="career.html">Career</a></li>
-              <li><a href="complaint_data.html">complaint data</a></li>
+              <li><Link to={"index"}>Home</Link></li>
+              <li><Link to={"services"}>service</Link></li>
+              <li><Link to={"kyc"}>KYC Form</Link></li>
+              <li><Link to={"career"}>Career</Link></li>
+              <li><Link to={"complaint_data"}>complaint data</Link></li>
             </ul>
             <div className="clearfix"></div>
           </div>
           <div className="col-sm-3 col-md-3 padAdd">
             <h4 className="mar-b-20"><b>Services</b></h4>
             <ul className="footer-link mar-b-30 mar-r-20">
-              <li><a href="services/stock-future-regular.html">Stock Future Regular</a></li>
-              <li><a href="services/journal-services.html">Journal Services</a></li>
-              <li><a href="services/index-expiry-special.html">Index Expiry Special</a></li>
-              <li><a href="services/index-platinum.html">Index Platinum</a></li>
-              <li><a href="services/all-agri-product.html">All Agri Product</a></li>
-              <li><a href="services/all-mcx.html">ALL MCX</a></li>
+              <li><Link to={"/services/stock-future-regular"}>Stock Future Regular</Link></li>
+              <li><Link to={"/services/journal-services"}>Journal Services</Link></li>
+              <li><Link to={"/services/index-expiry-special"}>Index Expiry Special</Link></li>
+              <li><Link to={"/services/index-platinum"}>Index Platinum</Link></li>
+              <li><Link to={"/services/all-agri-product"}>All Agri Product</Link></li>
+              <li><Link to={"/services/all-mcx"}>ALL MCX</Link></li>
             </ul>
           </div>
           <div className="clearfix"></div>
@@ -80,7 +81,7 @@ const Footer = () => (
               <div className="left-area"><i className="fa fa-home"></i></div>
               <div className="right-area">
                 <h5 className="mar-b-10"><b>Visit Us</b></h5>
-                <p>D.S Researech investment Advisors, 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P),  Ujjain (MP) 456001</p>
+                <p>D.S Researech Investment Researcher, 10/4-6,II Floor,Kalidas Marg,Maxi Road,Freeganj,Ujjain (M.P),  Ujjain (MP) 456001</p>
               </div>
             </div>
           </div>
@@ -98,7 +99,7 @@ const Footer = () => (
               <div className="left-area"><i className="fa fa-envelope"></i></div>
               <div className="right-area">
                 <h5 className="mar-b-10"><b>Mail Us</b></h5>
-                <p>info@eminentresearch.co</p>
+                <p>info@dsresearch.live</p>
               </div>
             </div>
           </div>
@@ -109,16 +110,16 @@ const Footer = () => (
           <div className="col-sm-12 col-md-6">
             <ul className="social-icons">
               <li>
-                <a className="facebook box-shadow-light" href="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook"></i><span></span></a>
+                <Link className="facebook box-shadow-light" to="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook"></i><span></span></Link>
               </li>
               <li>
-                <a className="twitter box-shadow-light" href="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i><span></span></a>
+                <Link className="twitter box-shadow-light" to="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i><span></span></Link>
               </li>
               <li>
-                <a className="google box-shadow-light" href="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-google-plus"></i><span></span></a>
+                <Link className="google box-shadow-light" to="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-google-plus"></i><span></span></Link>
               </li>
               <li>
-                <a className="linkedin box-shadow-light" href="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i><span></span></a>
+                <Link className="linkedin box-shadow-light" to="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i><span></span></Link>
               </li>
             </ul>
           </div>

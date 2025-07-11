@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ServiceSub = ({ stockcashregular }) => {
-  const { table, overview, feature, mediumOfCall, sampleCall } = stockcashregular;
+  const { title, table, overview, feature, mediumOfCall, sampleCall } = stockcashregular;
+  
+  // State to track active tab
+  const [activeTab, setActiveTab] = useState('Section1');
+
+  // Function to handle tab switching
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+  };
 
   return (
     <div className="container">
+     <center><b><h1 style={{paddingBottom:"1.5em"}}>{title}</h1></b></center>
       <div className="row">
         <div className="col-md-4">
           <div className="sidepanel">
@@ -41,22 +50,66 @@ const ServiceSub = ({ stockcashregular }) => {
         <div className="col-md-8">
           <div className="tab01 tab02" role="tabpanel">
             <ul className="nav nav-tabs nav-tabs nav-justified" role="tablist">
-              <li role="presentation" className="active">
-                <a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Overview</a>
+              <li role="presentation" className={activeTab === 'Section1' ? 'active' : ''}>
+                <a 
+                  href="#Section1" 
+                  aria-controls="home" 
+                  role="tab" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleTabClick('Section1');
+                  }}
+                >
+                  Overview
+                </a>
               </li>
-              <li role="presentation">
-                <a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Features</a>
+              <li role="presentation" className={activeTab === 'Section2' ? 'active' : ''}>
+                <a 
+                  href="#Section2" 
+                  aria-controls="profile" 
+                  role="tab" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleTabClick('Section2');
+                  }}
+                >
+                  Features
+                </a>
               </li>
-              <li role="presentation">
-                <a href="#Section3" aria-controls="settings" role="tab" data-toggle="tab">Medium of Calls</a>
+              <li role="presentation" className={activeTab === 'Section3' ? 'active' : ''}>
+                <a 
+                  href="#Section3" 
+                  aria-controls="settings" 
+                  role="tab" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleTabClick('Section3');
+                  }}
+                >
+                  Medium of Calls
+                </a>
               </li>
-              <li role="presentation">
-                <a href="#Section4" aria-controls="settings" role="tab" data-toggle="tab">Sample Call</a>
+              <li role="presentation" className={activeTab === 'Section4' ? 'active' : ''}>
+                <a 
+                  href="#Section4" 
+                  aria-controls="settings" 
+                  role="tab" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleTabClick('Section4');
+                  }}
+                >
+                  Sample Call
+                </a>
               </li>
             </ul>
 
             <div className="tab-content tab-content02">
-              <div role="tabpanel" className="tab-pane fade in active" id="Section1">
+              <div 
+                role="tabpanel" 
+                className={`tab-pane fade ${activeTab === 'Section1' ? 'in active' : ''}`} 
+                id="Section1"
+              >
                 <div className="padTopBot15 padBoth15">
                   <div className="row service_inner">
                     <div className="clearfix">
@@ -68,12 +121,16 @@ const ServiceSub = ({ stockcashregular }) => {
                 </div>
               </div>
 
-              <div role="tabpanel" className="tab-pane fade" id="Section2">
+              <div 
+                role="tabpanel" 
+                className={`tab-pane fade ${activeTab === 'Section2' ? 'in active' : ''}`} 
+                id="Section2"
+              >
                 <div className="padTopBot15 padBoth15">
                   <div className="row service_inner">
                     <div className="clearfix">
                       <div className="col-md-12">
-                        {feature.split('\n').map((line, idx) => (
+                        {feature && feature.split('\n').map((line, idx) => (
                           <p key={idx}>{line}</p>
                         ))}
                       </div>
@@ -82,7 +139,11 @@ const ServiceSub = ({ stockcashregular }) => {
                 </div>
               </div>
 
-              <div role="tabpanel" className="tab-pane fade" id="Section3">
+              <div 
+                role="tabpanel" 
+                className={`tab-pane fade ${activeTab === 'Section3' ? 'in active' : ''}`} 
+                id="Section3"
+              >
                 <div className="padTopBot15 padBoth15">
                   <div className="row service_inner">
                     <div className="clearfix">
@@ -94,12 +155,16 @@ const ServiceSub = ({ stockcashregular }) => {
                 </div>
               </div>
 
-              <div role="tabpanel" className="tab-pane fade" id="Section4">
+              <div 
+                role="tabpanel" 
+                className={`tab-pane fade ${activeTab === 'Section4' ? 'in active' : ''}`} 
+                id="Section4"
+              >
                 <div className="padTopBot15 padBoth15">
                   <div className="row service_inner">
                     <div className="clearfix">
                       <div className="col-md-12">
-                        {sampleCall.split('\n').map((line, idx) => (
+                        {sampleCall && sampleCall.split('\n').map((line, idx) => (
                           <p key={idx}>{line}</p>
                         ))}
                       </div>
@@ -107,7 +172,6 @@ const ServiceSub = ({ stockcashregular }) => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

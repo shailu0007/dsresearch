@@ -32,7 +32,7 @@ const IndividualKycForm = () => {
 
         try {
             // Replace with your actual API endpoint
-            const response = await axios.post('https://www.eminentresearch.co/Webcontroller/kyc', formData, {
+            const response = await axios.post('https://www.D.S research.co/Webcontroller/kyc', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Important for file uploads
                 },

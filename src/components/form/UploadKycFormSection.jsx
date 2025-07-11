@@ -22,7 +22,7 @@ function UploadKycFormSection() {
         e.preventDefault();
         e.stopPropagation();
         setDragActive(false);
-        
+
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
             setSelectedFile(e.dataTransfer.files[0]);
         }
@@ -44,7 +44,7 @@ function UploadKycFormSection() {
         console.log("Upload Form Data:", Object.fromEntries(formData.entries()));
 
         try {
-            const response = await axios.post('https://www.eminentresearch.co/Webcontroller/uploadKycDocument', formData, {
+            const response = await axios.post('https://www.D.S research.co/Webcontroller/uploadKycDocument', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -340,8 +340,8 @@ function UploadKycFormSection() {
                             Select your KYC Document
                             <span className="required-star">*</span>
                         </label>
-                        
-                        <div 
+
+                        <div
                             className={`file-upload-area ${dragActive ? 'drag-active' : ''}`}
                             onDragEnter={handleDrag}
                             onDragLeave={handleDrag}
@@ -356,7 +356,7 @@ function UploadKycFormSection() {
                             <div className="file-types">
                                 Supported: PDF, DOC, DOCX, JPG, JPEG, PNG
                             </div>
-                            
+
                             <input
                                 type="file"
                                 id="uploadedFile"

@@ -103,10 +103,10 @@ const Disclosure = () => {
               <b>Compliance Officer : </b>Shivangi Chandel
             </p>
             <p>
-              <b>Email Id: </b>compliance@eminentresearch.co
+              <b>Email Id: </b>compliance@D.S research.co
             </p>
             <p>
-              <b>Phone No : </b>8370039800
+              <b>Phone No : </b>8959322387
             </p>
           </div>
         </div>
