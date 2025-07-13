@@ -8,14 +8,14 @@ const PrivacyPolicy = () => {
           Privacy <span>Policy</span>
         </h1>
         <p>
-          <b>D.S Researech research is fully committed to safeguard your personal information.</b> We must obtain
+          <b>D.S Researech is fully committed to safeguard your personal information.</b> We must obtain
           some basic personal information like Full Name, address, telephone numbers, Email address etc. from you
-          to provide you with the D.S Researech Research. This information is helpful to both D.S Researech Research &amp;
+          to provide you with the D.S Researech. This information is helpful to both D.S Researech &amp;
           Investment Advisor. and you to fetch services easily and to connect in time.
         </p>
         <p>
           From time to time, we may request your valuable feedback for the evaluation of the services that
-          D.S Researech Research provides and changes if you prefer any. We might invite you to actively participate
+          D.S Researech provides and changes if you prefer any. We might invite you to actively participate
           in polls or surveys that may be posted on our website or mailed to you directly. Participation in
           survey or polls is completely voluntary.
         </p>

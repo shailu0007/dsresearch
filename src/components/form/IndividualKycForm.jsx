@@ -32,7 +32,7 @@ const IndividualKycForm = () => {
 
         try {
             // Replace with your actual API endpoint
-            const response = await axios.post('https://www.D.S research.co/Webcontroller/kyc', formData, {
+            const response = await axios.post('/api/index.php?action=kycform', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data', // Important for file uploads
                 },
@@ -518,22 +518,6 @@ const IndividualKycForm = () => {
                     </div>
                 </div>
 
-                <div className="form-group col-md-12">
-                    <label htmlFor="kyccaptcha">Confirmation Code *&nbsp;:</label>
-                    {/* The image src is dynamic, so you'd need to fetch this from an API endpoint */}
-                    <img id="image" src="Webcontroller/kyccaptcha/84137.png" alt="Captcha" />
-                    <input
-                        name="captcha"
-                        className="form-control"
-                        placeholder="Please Enter Captcha"
-                        type="text"
-                        id="kyccaptcha"
-                        style={{ width: '251px' }}
-                        {...register("captcha", { required: "Captcha is required" })}
-                    />
-                    {errors.captcha && <span className="text-danger">{errors.captcha.message}</span>}
-                    <span id="savekyc12" style={{ color: 'red', fontSize: '18px', fontWeight: 'bold' }}></span>
-                </div>
 
                 <div className="col-sm-12">
                     <div className="checkbox">

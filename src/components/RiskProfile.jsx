@@ -64,7 +64,7 @@ const RiskProfile = () => {
 
         try {
             // Replace with your actual API endpoint
-            const response = await axios.post('/api/submitRiskProfile', {
+            const response = await axios.post('/api/index.php?action=riskprofileform', {
                 ...data,
                 totalRiskScore,
                 riskProfile,
@@ -78,13 +78,6 @@ const RiskProfile = () => {
         }
     };
 
-    // Dummy function for OTP (you'd replace this with actual OTP logic)
-    const sendOtp = () => {
-        alert("OTP functionality would be implemented here!");
-        // In a real application, you would make an Axios call to your backend
-        // to send an OTP to the provided mobile number.
-        // Example: axios.post('/api/send-otp', { mobile: formValues.mobile });
-    };
 
     return (
         <>
@@ -120,8 +113,8 @@ const RiskProfile = () => {
                                     <input type="text" {...field} id="contactno" className="form-control" autoComplete="off" />
                                 )}
                             />
-                            {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
-                            <button type="button" onClick={sendOtp} id="getotp" className="btn01">GET OTP</button>
+                            {/* {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
+                            <button type="button" onClick={sendOtp} id="getotp" className="btn01">GET OTP</button> */}
                         </div>
                         <div className="form-group col-md-4">
                             <label>Email ID :-</label>

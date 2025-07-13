@@ -151,7 +151,7 @@ const Header = () => {
                   <div className="container">
                     <div className="row">
                       <div className="banner-text al-center pos-center light">
-                        <h2 className="with-line ucap">Welcome To D.S Researech Research</h2>
+                        <h2 className="with-line ucap">Welcome To D.S Researech</h2>
                         <p>
                           We are highly regarded throughout the industry for providing innovative Financial solutions, maintaining strong professional relationships and delivering rewarding high quality outcomes.
                         </p>
@@ -172,7 +172,7 @@ const Header = () => {
                   <div className="container">
                     <div className="row">
                       <div className="banner-text al-center pos-center light">
-                        <h2 className="with-line ucap">Welcome To D.S Researech Research</h2>
+                        <h2 className="with-line ucap">Welcome To D.S Researech</h2>
                         <p>SERVICE LEVEL SATISFACTORY&nbsp;</p>
                       </div>
                     </div>

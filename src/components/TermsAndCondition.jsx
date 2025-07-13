@@ -8,10 +8,10 @@ const TermsAndConditions = () => {
           Term &amp; <span>Condition</span>
         </h2>
         <p className="welcome">
-          Welcome to D.S Researech Research. If you continue to browse and use this website;
+          Welcome to D.S Researech. If you continue to browse and use this website;
           you are agreeing to comply with and be bound by the following terms and
           conditions of use. We may change these terms and conditions at any time. The
-          term D.S Researech Research' or 'us' or 'we' or 'our' refers to the owners,
+          term D.S Researech' or 'us' or 'we' or 'our' refers to the owners,
           employees of the website. The term 'you' refers to the user or viewer of our
           website.
         </p>
