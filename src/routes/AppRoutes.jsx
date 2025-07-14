@@ -35,6 +35,9 @@ import Dashboard from "../components/client/Dashboard";
 import AdminLogin from "../components/admin/AdminLogin.jsx";
 import AdminDashboard from "../components/admin/AdminDashboard.jsx";
 import PrivateAdminRoute from "./PrivateAdminRoute.jsx";
+import UserCards from "../components/admin/UserCards.jsx";
+import ExpertCards from "../components/admin/ExpertCards.jsx";
+import KycCards from "../components/admin/KYCCards.jsx";
 
 const router = createBrowserRouter([
 
@@ -101,6 +104,13 @@ const router = createBrowserRouter([
       <PrivateAdminRoute>
         <AdminDashboard />
       </PrivateAdminRoute>
+      ,
+      children: [
+        { index:true, element: <h1>Admin Dashboard</h1> },
+         { path: "users", element: <UserCards /> },
+        { path: "expert-forms-data", element: <ExpertCards /> },
+        { path: "kyc", element: <KycCards /> },
+      ]
   }
 ]);
 

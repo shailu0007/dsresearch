@@ -8,13 +8,7 @@ const Dashboard = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('dashboard');
 
   const menuItems = [
-    { id: 'dashboard', icon: '📊', label: 'Dashboard', badge: null },
-    { id: 'users', icon: '👥', label: 'Users', badge: '12' },
-    { id: 'products', icon: '📦', label: 'Products', badge: '24' },
-    { id: 'orders', icon: '🛒', label: 'Orders', badge: '8' },
-    { id: 'analytics', icon: '📈', label: 'Analytics', badge: null },
-    { id: 'settings', icon: '⚙️', label: 'Settings', badge: null },
-    { id: 'messages', icon: '💬', label: 'Messages', badge: '3' }
+    { id: 'dashboard', icon: '📊', label: 'Dashboard', badge: null , link:"/dashboard"},
   ];
 
   const toggleSidebar = () => {

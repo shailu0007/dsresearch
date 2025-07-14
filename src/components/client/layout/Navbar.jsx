@@ -4,7 +4,7 @@ const Navbar = ({ toggleSidebar }) => (
   <nav
     className="navbar navbar-expand-lg fixed-top"
     style={{
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(30, 64, 175) 100%)',
       padding: '12px 0',
       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
       zIndex: 1030,

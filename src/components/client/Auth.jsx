@@ -250,7 +250,7 @@ const Auth = () => {
   // --- Inline Styles (as per user request, these are not changed) ---
   const containerStyle = {
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: 'linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(30, 64, 175) 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -272,7 +272,7 @@ const Auth = () => {
   const logoStyle = {
     fontSize: '2.5rem',
     fontWeight: 'bold',
-    background: 'linear-gradient(45deg, #667eea, #764ba2)',
+    background: 'linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(30, 64, 175) 100%)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     textAlign: 'center',
@@ -341,7 +341,7 @@ const Auth = () => {
   const buttonStyle = {
     width: '100%',
     padding: '15px',
-    background: loading ? '#ccc' : 'linear-gradient(45deg, #667eea, #764ba2)',
+    background: loading ? '#ccc' : 'linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(30, 64, 175) 100%',
     border: 'none',
     borderRadius: '12px',
     color: 'white',

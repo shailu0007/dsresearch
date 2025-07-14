@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import Navbar from '../client/layout/Navbar';
-import Sidebar from '../client/layout/Sidebar';
+import Sidebar from './layout/Sidebar';
 import { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState('dashboard');
+  const navigate = useNavigate();
 
   const menuItems = [
-    { id: 'dashboard', icon: '📊', label: 'Dashboard', badge: null },
-    { id: 'users', icon: '👥', label: 'Users', badge: '12' },
-    { id: 'products', icon: '📦', label: 'Products', badge: '24' },
-    { id: 'orders', icon: '🛒', label: 'Orders', badge: '8' },
-    { id: 'analytics', icon: '📈', label: 'Analytics', badge: null },
-    { id: 'settings', icon: '⚙️', label: 'Settings', badge: null },
-    { id: 'messages', icon: '💬', label: 'Messages', badge: '3' }
+    { id: 'dashboard', icon: '📊', label: 'Dashboard', badge: null ,link:"/admin/dashboard" },
+    { id: 'users', icon: '👥', label: 'Users', badge: '12', link:"/admin/dashboard/users" },
+    { id: 'expert-advice', icon: '💬', label: 'Expert Advice Request', badge: '24', link:"/admin/dashboard/expert-forms-data" },
+    { id: 'kyc', icon: '💬', label: 'KYC', badge: '8', link:"/admin/dashboard/kyc" },
+    { id: 'RiskProfile', icon: '📈', label: 'Risk Profile', badge: null, link:"/admin/dashboard/RiskProfile" },
   ];
 
   const toggleSidebar = () => {
@@ -25,6 +25,7 @@ const AdminDashboard = () => {
   const handleMenuClick = (menuId) => {
     setActiveMenuItem(menuId);
     setSidebarOpen(false);
+    navigate(menuItems.find(item => item.id === menuId).link);
   };
 
    useEffect(() => {
@@ -78,7 +79,7 @@ const AdminDashboard = () => {
           }
         `}</style>
         <div className="container-fluid">
-          Admin
+          <Outlet />
         </div>
       </div>
     </div>
