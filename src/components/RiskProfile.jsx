@@ -1,673 +1,560 @@
-import React, { useEffect, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios'; // Assuming you'll use axios for API calls
 
-const RiskProfile = () => {
-    const { handleSubmit, control, watch, formState: { errors } } = useForm();
-    const [totalRiskScore, setTotalRiskScore] = useState(0);
-    const [riskProfile, setRiskProfile] = useState('');
-    const [servicesOffered, setServicesOffered] = useState([]);
+// Base URL for your backend API
+const API_BASE_URL = 'http://localhost/backend'; // Adjust if your backend is on a different URL
 
-    // Watch all radio button values to calculate risk score dynamically
-    const formValues = watch();
-
-    // This effect calculates the risk score whenever form values change
-    useEffect(() => {
-    let score = 0;
-    const questions = [
-        'agegroup', 'invgoal', 'occupation', 'income', 'trading',
-        'preftrading', 'tradingexp', 'quitexp', 'debt', 'fund',
-        'depend', 'emerfund', 'tolerance', 'equity', 'comminves',
-        'volatile', 'highrisk', 'involvement', 'investment', 'pensions'
-    ];
-
-    questions.forEach(qName => {
-        const selectedValue = formValues[qName];
-        if (selectedValue && !isNaN(parseInt(selectedValue, 10))) {
-            score += parseInt(selectedValue, 10);
+function RiskProfileForm() {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue, // Used to programmatically set form values
+        formState: { errors, isSubmitting, isSubmitSuccessful }
+    } = useForm({
+        defaultValues: {
+            name: '',
+            mobile: '',
+            email: '',
+            panno: '',
+            adhar: '',
+            birth: '', // Assuming format 'YYYY-MM-DD' for date input
+            gender1: '',
+            agegroup: '',
+            invgoal: '',
+            occupation: '',
+            income: '',
+            trading: '',
+            preftrading: '',
+            tradingexp: '',
+            quitexp: '',
+            debt: '',
+            fund: '',
+            depend: '',
+            emerfund: '',
+            tolerance: '',
+            overall_exp_invest: '',
+            expect: '',
+            market_direction: '',
+            inv_decision: '',
+            time_invest: '',
+            servicesOffered: [], // Initialize as an empty array for checkboxes
+            // totalRiskScore and riskProfile will be calculated or derived
         }
     });
 
-    // Only update if score has actually changed
-    if (score !== totalRiskScore) {
+    // Watch specific fields to derive totalRiskScore and riskProfile
+    const watchTradingExp = watch('tradingexp');
+    const watchQuitExp = watch('quitexp');
+    const watchTolerance = watch('tolerance');
+    const watchOverallExpInvest = watch('overall_exp_invest');
+
+    // State for calculated fields (you might move this calculation to backend or simplify)
+    const [totalRiskScore, setTotalRiskScore] = useState(0);
+    const [riskProfile, setRiskProfile] = useState('');
+
+    useEffect(() => {
+        // Example: Simple logic for calculating risk score and profile
+        // This is a placeholder. You'll need to implement your actual risk assessment logic.
+        let score = 0;
+        let profile = 'Low Risk';
+
+        // Add points based on selected options for risk assessment
+        // (You'll need to expand this based on your actual scoring logic)
+        if (watchTradingExp === 'More than 5 years') score += 10;
+        else if (watchTradingExp === '3-5 years') score += 7;
+        else if (watchTradingExp === '1-3 years') score += 4;
+
+        if (watchQuitExp === 'Not at all') score += 5;
+        else if (watchQuitExp === 'Maybe in 1-2 years') score += 3;
+
+        if (watchTolerance === 'High tolerance') score += 10;
+        else if (watchTolerance === 'Moderate tolerance') score += 5;
+
+        if (watchOverallExpInvest === 'Very high Experience') score += 10;
+        else if (watchOverallExpInvest === 'High Experience') score += 7;
+        else if (watchOverallExpInvest === 'Moderate experience') score += 4;
+
         setTotalRiskScore(score);
-        determineRiskProfile(score);
-    }
-}, [formValues]);
 
-    const determineRiskProfile = (score) => {
-        let profile = '';
-        let services = [];
+        if (score > 30) profile = 'High Risk';
+        else if (score > 15) profile = 'Medium Risk';
+        else profile = 'Low Risk'; // Default or calculated based on score range
 
-        if (score >= 20 && score <= 35) {
-            profile = 'Low Risk Appetite';
-            services = ['Equity (Long Term)', 'Debt Funds', 'Fixed Deposits'];
-        } else if (score >= 36 && score <= 60) {
-            profile = 'Medium Risk Appetite';
-            services = ['Balanced Funds', 'Large Cap Equity', 'Arbitrage Funds'];
-        } else if (score >= 61 && score <= 84) {
-            profile = 'High Risk Appetite';
-            services = ['Small/Mid Cap Equity', 'Derivatives', 'Commodities', 'Forex'];
-        } else {
-            profile = 'Please complete the questionnaire to determine your risk profile.';
-            services = [];
-        }
         setRiskProfile(profile);
-        setServicesOffered(services);
-    };
+
+        // Set the calculated values into the form fields programmatically
+        // This is important so they are included in the submitted data
+        setValue('totalRiskScore', score);
+        setValue('riskProfile', profile);
+
+    }, [watchTradingExp, watchQuitExp, watchTolerance, watchOverallExpInvest, setValue]);
+
 
     const onSubmit = async (data) => {
-        console.log("Form Data:", data);
-        console.log("Total Risk Score:", totalRiskScore);
-        console.log("Risk Profile:", riskProfile);
-        console.log("Services Offered:", servicesOffered);
-
         try {
-            // Replace with your actual API endpoint
-            const response = await axios.post('/api/index.php?action=riskprofileform', {
-                ...data,
-                totalRiskScore,
-                riskProfile,
-                servicesOffered
+            // The calculated totalRiskScore and riskProfile are already set into the form
+            // using setValue, so they will be part of the `data` object.
+            const payload = { ...data };
+
+            console.log("Form data before sending:", payload);
+
+            // Make the API call to your backend
+            const response = await axios.post("/api/index.php?action=riskprofileform", payload, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
-            console.log('Form submission successful:', response.data);
-            alert('Risk Profile Submitted Successfully!');
+
+            console.log('Backend response:', response.data);
+            alert('Risk Profile submitted successfully!');
+
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('There was an error submitting your form. Please try again.');
+            if (error.response) {
+                console.error('Backend error data:', error.response.data);
+                console.error('Backend error status:', error.response.status);
+                console.error('Backend error headers:', error.response.headers);
+                alert(`Submission failed: ${error.response.data?.message || error.response.data || error.message}`);
+            } else if (error.request) {
+                console.error('No response received:', error.request);
+                alert('Submission failed: No response from server. Check network connection.');
+            } else {
+                console.error('Error setting up request:', error.message);
+                alert(`Submission failed: ${error.message}`);
+            }
         }
     };
 
-
     return (
-        <>
-            <h2 className="heading-section text-center">Risk <span>Profile </span></h2>
-            <div className="container">
-                <div className="form02 sectionIn">
-                    <form onSubmit={handleSubmit(onSubmit)} className="row">
-                        <div className="form-group col-md-4">
-                            <label htmlFor="name">Your Name :-</label>
-                            <Controller
-                                name="name"
-                                control={control}
-                                rules={{ required: 'Name is required' }}
-                                render={({ field }) => (
-                                    <input type="text" {...field} id="name" className="form-control" autoComplete="off" />
-                                )}
-                            />
-                            {errors.name && <p className="text-danger">{errors.name.message}</p>}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>Contact Number :-</label>
-                            <Controller
-                                name="mobile"
-                                control={control}
-                                rules={{
-                                    required: 'Contact number is required',
-                                    pattern: {
-                                        value: /^[0-9]{10}$/,
-                                        message: 'Invalid contact number (10 digits)'
-                                    }
-                                }}
-                                render={({ field }) => (
-                                    <input type="text" {...field} id="contactno" className="form-control" autoComplete="off" />
-                                )}
-                            />
-                            {/* {errors.mobile && <p className="text-danger">{errors.mobile.message}</p>}
-                            <button type="button" onClick={sendOtp} id="getotp" className="btn01">GET OTP</button> */}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>Email ID :-</label>
-                            <Controller
-                                name="email"
-                                control={control}
-                                rules={{
-                                    required: 'Email is required',
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                        message: 'Invalid email address'
-                                    }
-                                }}
-                                render={({ field }) => (
-                                    <input type="email" {...field} id="exampleInputEmail1" className="form-control" autoComplete="off" />
-                                )}
-                            />
-                            {errors.email && <p className="text-danger">{errors.email.message}</p>}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>PAN Number :-</label>
-                            <Controller
-                                name="panno"
-                                control={control}
-                                rules={{
-                                    required: 'PAN number is required',
-                                    pattern: {
-                                        value: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
-                                        message: 'Invalid PAN number format'
-                                    }
-                                }}
-                                render={({ field }) => (
-                                    <input type="text" {...field} id="paninput" className="form-control" autoComplete="off" />
-                                )}
-                            />
-                            {errors.panno && <p className="text-danger">{errors.panno.message}</p>}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>Aadhaar Number :-</label>
-                            <Controller
-                                name="adhar"
-                                control={control}
-                                rules={{
-                                    required: 'Aadhaar number is required',
-                                    pattern: {
-                                        value: /^[0-9]{12}$/,
-                                        message: 'Invalid Aadhaar number (12 digits)'
-                                    }
-                                }}
-                                render={({ field }) => (
-                                    <input type="text" {...field} id="adhar" className="form-control" autoComplete="off" />
-                                )}
-                            />
-                            {errors.adhar && <p className="text-danger">{errors.adhar.message}</p>}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>Date of Birth :-</label>
-                            <Controller
-                                name="birth"
-                                control={control}
-                                rules={{ required: 'Date of Birth is required' }}
-                                render={({ field }) => (
-                                    <input
-                                        placeholder="DD/MM/YYYY"
-                                        type="text"
-                                        {...field}
-                                        id="dobinput"
-                                        className="form-control"
-                                        autoComplete="off"
-                                    />
-                                )}
-                            />
-                            {errors.birth && <p className="text-danger">{errors.birth.message}</p>}
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label>Gender :-</label>
-                            <Controller
-                                name="gender1"
-                                control={control}
-                                rules={{ required: 'Gender is required' }}
-                                render={({ field }) => (
-                                    <select {...field} id="gender1" className="form-control">
-                                        <option value="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                )}
-                            />
-                            {errors.gender1 && <p className="text-danger">{errors.gender1.message}</p>}
-                        </div>
-                        <div className="clearfix"></div>
-                        <div className="border visiblePc"></div>
-                        <div className="que">
-                            <p><b>Client will be classified as low risk appetite, medium risk appetite, and high risk appetite based on the score obtained by answering the following questionnaire. Once, the score is obtained, the client will be offered services which suit his/her risk appetite. The classification of the services is also mentioned below.</b></p>
-                            <p><b>Risk profiling questionnaire and product classification</b></p>
-                        </div>
+        <div className="risk-profile-container">
+            <style jsx>{`
+                .risk-profile-container {
+                    max-width: 800px;
+                    margin: 40px auto;
+                    padding: 30px;
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    color: #333;
+                }
 
-                        {/* Question 1 */}
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            <div className="col-md-4">
-                                <label>1. What is your age group?</label><br />
-                                <Controller
-                                    name="agegroup"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Under 30" id="agegroup_under30" data-val='4' /><span className="ques">Under 30</span><br />
-                                            <input type="radio" {...field} value="31-45" id="agegroup_31_45" data-val='3' /><span className="ques">31-45</span><br />
-                                            <input type="radio" {...field} value="46-60" id="agegroup_46_60" data-val='2' /> <span className="ques">46-60</span><br />
-                                            <input type="radio" {...field} value="60+" id="agegroup_60plus" data-val='1' /><span className="ques">60+</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.agegroup && <p className="text-danger">{errors.agegroup.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 2 */}
-                            <div className="col-md-4">
-                                <label>2. Your Investment Goal can be defined as?</label><br />
-                                <Controller
-                                    name="invgoal"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Regular Income" id="invgoal_regincome" data-val='1' /><span className="ques">Regular Income</span><br />
-                                            <input type="radio" {...field} value="Capital Appreciation and Regular Income" id="invgoal_capregincome" data-val='4' /><span className="ques">Capital Appreciation and Regular Income</span><br />
-                                            <input type="radio" {...field} value="Capital Appreciation" id="invgoal_capapp" data-val='2' /><span className="ques">Capital Appreciation</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.invgoal && <p className="text-danger">{errors.invgoal.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 3 */}
-                            <div className="col-md-4">
-                                <label>3. Occupation (please select the appropriate)</label><br />
-                                <Controller
-                                    name="occupation"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Self employed or Officer" id="occupation_selfofficer" data-val='3' /><span className="ques"> Self employed or Officer</span><br />
-                                            <input type="radio" {...field} value="Salaried" id="occupation_salaried" data-val='2' /><span className="ques"> Salaried</span><br />
-                                            <input type="radio" {...field} value="Student or senior citizen" id="occupation_student" data-val='1' /><span className="ques">Student or senior citizen</span><br />
-                                            <input type="radio" {...field} value="Business man who have more than one business" id="occupation_businessman" data-val='4' /><span className="ques">Business man who have more than one &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;business</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.occupation && <p className="text-danger">{errors.occupation.message}</p>}
-                            </div>
-                        </div>
+                h2 {
+                    text-align: center;
+                    color: #0056b3;
+                    margin-bottom: 30px;
+                    font-size: 2em;
+                }
 
-                        <div className="col-md-12 border visiblePc"></div>
+                h3 {
+                    color: #007bff;
+                    border-bottom: 2px solid #e9ecef;
+                    padding-bottom: 10px;
+                    margin-top: 30px;
+                    margin-bottom: 20px;
+                }
 
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 4 */}
-                            <div className="col-md-4">
-                                <label>4. What is yours Yearly Income Range</label><br />
-                                <Controller
-                                    name="income"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Below 2 lac" id="income_below2" data-val='1' /><span className="ques">Below 2 lac</span><br />
-                                            <input type="radio" {...field} value="2-5 lacs" id="income_2_5" data-val='2' /><span className="ques">2-5 lac </span><br />
-                                            <input type="radio" {...field} value="5-10 lacs" id="income_5_10" data-val='3' /><span className="ques">5-10 lac</span><br />
-                                            <input type="radio" {...field} value="Above 10 Lacs" id="income_above10" data-val='4' /><span className="ques">Above 10 Lacs</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.income && <p className="text-danger">{errors.income.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 5 */}
-                            <div className="col-md-4">
-                                <label>5.What is yours Trading Amount</label><br />
-                                <Controller
-                                    name="trading"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="1 to 3 lakh" id="trading_1_3" data-val='1' /><span className="ques"> 1 to 3 lakh </span><br />
-                                            <input type="radio" {...field} value="3 to 5 lakh" id="trading_3_5" data-val='2' /><span className="ques">3 to 5 lakh</span><br />
-                                            <input type="radio" {...field} value="5-10 lacs" id="trading_5_10" data-val='3' /><span className="ques">5-10 lacs</span><br />
-                                            <input type="radio" {...field} value="Above 10 lacs" id="trading_above10" data-val='4' /><span className="ques"> Above 10 lacs</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.trading && <p className="text-danger">{errors.trading.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 6 */}
-                            <div className="col-md-4">
-                                <label>6. What is your Preferred Trading Pattern?</label><br />
-                                <Controller
-                                    name="preftrading"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Intraday Trader" id="preftrading_intraday" data-val='4' /><span className="ques">Intraday Trader</span><br />
-                                            <input type="radio" {...field} value="BTST/STBT Trader" id="preftrading_btst" data-val='3' /><span className="ques">BTST/STBT Trader</span><br />
-                                            <input type="radio" {...field} value="Short term Positional Trader" id="preftrading_shortterm" data-val='2' /><span className="ques">Short term Positional Trader</span><br />
-                                            <input type="radio" {...field} value="Long Term Positional Trader" id="preftrading_longterm" data-val='1' /><span className="ques">Long Term Positional Trader</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.preftrading && <p className="text-danger">{errors.preftrading.message}</p>}
-                            </div>
-                        </div>
+                form {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 15px;
+                }
 
-                        <div className="col-md-12 border visiblePc"></div>
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                    color: #555;
+                }
 
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 7 */}
-                            <div className="col-md-4">
-                                <label>7.What is your total trading experience</label><br />
-                                <Controller
-                                    name="tradingexp"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Less than 1 years" id="tradingexp_less1" data-val='1' /><span className="ques">Less than 1 years</span><br />
-                                            <input type="radio" {...field} value="1-3 years" id="tradingexp_1_3" data-val='2' /><span className="ques">1-3 years</span><br />
-                                            <input type="radio" {...field} value="3-5 years" id="tradingexp_3_5" data-val='3' /><span className="ques">3-5years</span><br />
-                                            <input type="radio" {...field} value="Above 5 years" id="tradingexp_above5" data-val='4' /><span className="ques">Above 5 years</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.tradingexp && <p className="text-danger">{errors.tradingexp.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 8 */}
-                            <div className="col-md-4">
-                                <label>8. You are quite experience with?</label><br />
-                                <Controller
-                                    name="quitexp"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Stock" id="quitexp_stock" data-val='1' /><span className="ques">Stock</span><br />
-                                            <input type="radio" {...field} value="Derivatives Stocks" id="quitexp_derivatives" data-val='2' /><span className="ques">Derivatives Stocks</span><br />
-                                            <input type="radio" {...field} value="Commodity and Forex" id="quitexp_commforex" data-val='3' /><span className="ques">Commodity and Forex</span><br />
-                                            <input type="radio" {...field} value="All" id="quitexp_all" data-val='4' /><span className="ques">All</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.quitexp && <p className="text-danger">{errors.quitexp.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 9 */}
-                            <div className="col-md-4">
-                                <label>9. What percentage of monthly income is allocated to pay off debt [all EMIs]?</label><br />
-                                <Controller
-                                    name="debt"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Between 0% -10%" id="debt_0_10" data-val='4' /><span className="ques">Between 0% -10%</span><br />
-                                            <input type="radio" {...field} value="Between 10% - 25%" id="debt_10_25" data-val='3' /><span className="ques">Between 10% - 25%</span><br />
-                                            <input type="radio" {...field} value="Between 25% - 50%" id="debt_25_50" data-val='2' /><span className="ques">Between 25% - 50%</span><br />
-                                            <input type="radio" {...field} value="Above 50%" id="debt_above50" data-val='1' /><span className="ques">Above 50%</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.debt && <p className="text-danger">{errors.debt.message}</p>}
-                            </div>
-                        </div>
+                input[type="text"],
+                input[type="email"],
+                input[type="date"],
+                select {
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    border: 1px solid #ced4da;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+                }
 
-                        <div className="col-md-12 border visiblePc"></div>
+                input[type="text"]:focus,
+                input[type="email"]:focus,
+                input[type="date"]:focus,
+                select:focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                    outline: none;
+                }
 
-                        <div className="col-md-12 mt20">
-                            {/* Question 10 */}
-                            <div className="col-md-4">
-                                <label>10. Approx Value of assets held like property, FD, Shares, Mutual Fund etc.</label><br />
-                                <Controller
-                                    name="fund"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Less than 1 lacs" id="fund_less1" data-val='1' /><span className="ques"> Less than 1 lacs</span><br />
-                                            <input type="radio" {...field} value="1-2 lacs" id="fund_1_2" data-val='2' /><span className="ques">1-2 lacs</span><br />
-                                            <input type="radio" {...field} value="2-5 lacs" id="fund_2_5" data-val='3' /><span className="ques">2-5 lacs</span><br />
-                                            <input type="radio" {...field} value="Above 5 lacs" id="fund_above5" data-val='4' /><span className="ques"> Above 5 lacs</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.fund && <p className="text-danger">{errors.fund.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 11 */}
-                            <div className="col-md-4">
-                                <label>11. Count of financially dependents person on you ?</label><br />
-                                <Controller
-                                    name="depend"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="None" id="depend_none" data-val='4' /><span className="ques">None</span><br />
-                                            <input type="radio" {...field} value="Between 1-3" id="depend_1_3" data-val='3' /><span className="ques">Between 1-3</span><br />
-                                            <input type="radio" {...field} value="Between 4-6" id="depend_4_6" data-val='2' /><span className="ques">Between 4-6</span><br />
-                                            <input type="radio" {...field} value="Above 6 Members" id="depend_above6" data-val='1' /><span className="ques">Above 6 Members</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.depend && <p className="text-danger">{errors.depend.message}</p>}
-                            </div>
-                            {/* Question 12 */}
-                            <div className="col-md-4 mt20">
-                                <label>12. What is the size of your emergency fund?</label><br />
-                                <Controller
-                                    name="emerfund"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="0-1 month income" id="emerfund_0_1" data-val='1' /><span className="ques">0-1 month income</span><br />
-                                            <input type="radio" {...field} value="Between 1-3 months income" id="emerfund_1_3" data-val='2' /><span className="ques">Between 1-3 months income</span><br />
-                                            <input type="radio" {...field} value="Between 3-6 months income" id="emerfund_3_6" data-val='3' /><span className="ques">Between 3-6 months income</span><br />
-                                            <input type="radio" {...field} value="Above 6 months income" id="emerfund_above6" data-val='4' /><span className="ques">Above 6 months income</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.emerfund && <p className="text-danger">{errors.emerfund.message}</p>}
-                            </div>
-                        </div>
+                .checkbox-group div {
+                    margin-bottom: 10px;
+                }
 
-                        <div className="col-md-12 border visiblePc"></div>
+                .checkbox-group label {
+                    flex-direction: row; /* Align checkbox and label horizontally */
+                    align-items: center;
+                    margin-bottom: 0;
+                }
 
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 13 */}
-                            <div className="col-md-4">
-                                <label>13. Your risk tolerance capacity, in terms of loss in your investment amount which You can bear ?</label><br />
-                                <Controller
-                                    name="tolerance"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="0-5%" id="tolerance_0_5" data-val='1' /><span className="ques">0-5%</span><br />
-                                            <input type="radio" {...field} value="5%-10%" id="tolerance_5_10" data-val='2' /><span className="ques">5%-10%</span><br />
-                                            <input type="radio" {...field} value="10%-20%" id="tolerance_10_20" data-val='3' /><span className="ques">10%-20%</span><br />
-                                            <input type="radio" {...field} value="Above 20%" id="tolerance_above20" data-val='4' /><span className="ques">Above 20%</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.tolerance && <p className="text-danger">{errors.tolerance.message}</p>}
-                            </div>
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 14 */}
-                            <div className="col-md-4">
-                                <label>14. What is your experience with Equity investments?</label><br />
-                                <Controller
-                                    name="equity"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Extensive experience" id="equity_extensive" data-val='4' /><span className="ques"> Extensive experience</span><br />
-                                            <input type="radio" {...field} value="Moderate experience" id="equity_moderate" data-val='3' /><span className="ques">Moderate experience</span><br />
-                                            <input type="radio" {...field} value="Very less experience" id="equity_veryless" data-val='2' /><span className="ques"> Very less experience </span><br />
-                                            <input type="radio" {...field} value="No experience" id="equity_no" data-val='1' /><span className="ques">No experience </span>
-                                        </>
-                                    )}
-                                />
-                                {errors.equity && <p className="text-danger">{errors.equity.message}</p>}
-                            </div>
-                            <div className="col-md-4">
-                                <label>15. What is your experience with Commodity investments?</label><br />
-                                <Controller
-                                    name="comminves"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Extensive experience" id="comminves_extensive" data-val='4' /><span className="ques">Extensive experience </span><br />
-                                            <input type="radio" {...field} value="Moderate experience" id="comminves_moderate" data-val='3' /><span className="ques">Moderate experience</span><br />
-                                            <input type="radio" {...field} value="Very less Experience" id="comminves_veryless" data-val='2' /><span className="ques">Very less Experience</span><br />
-                                            <input type="radio" {...field} value="No experience" id="comminves_no" data-val='1' /><span className="ques">No experience </span>
-                                        </>
-                                    )}
-                                />
-                                {errors.comminves && <p className="text-danger">{errors.comminves.message}</p>}
-                            </div>
-                        </div>
+                .checkbox-group input[type="checkbox"] {
+                    margin-right: 10px;
+                    width: auto; /* Override general input width for checkboxes */
+                }
 
-                        <div className="col-md-12 border visiblePc"></div>
+                span.error-message {
+                    color: #dc3545;
+                    font-size: 0.85em;
+                    margin-top: 5px;
+                }
 
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 16 */}
-                            <div className="col-md-4">
-                                <label>16. When market is volatile, would you like to invest in more risky investment instead of less risky investment to earn high return?/Direct questions to ascertain risk appetite?</label><br />
-                                <Controller
-                                    name="volatile"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Strongly prefer" id="volatile_stronglypref" data-val='4' /><span className="ques">Strongly prefer </span><br />
-                                            <input type="radio" {...field} value="Prefer" id="volatile_pref" data-val='3' /><span className="ques">Prefer </span><br />
-                                            <input type="radio" {...field} value="Indifferent" id="volatile_indiff" data-val='2' /><span className="ques">Indifferent </span><br />
-                                            <input type="radio" {...field} value="Do not prefer" id="volatile_donotpref" data-val='1' /><span className="ques">Do not prefer </span>
-                                        </>
-                                    )}
-                                />
-                                {errors.volatile && <p className="text-danger">{errors.volatile.message}</p>}
-                            </div>
+                button[type="submit"] {
+                    background-color: #28a745;
+                    color: white;
+                    padding: 12px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin-top: 20px;
+                    transition: background-color 0.3s ease;
+                }
 
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            {/* Question 17 */}
-                            <div className="col-md-4">
-                                <label>17.High risk is associated with high return, medium risk is associated with medium returns and low risk is associated with low returns? What risk you can bear ?/ Direct questions to ascertain risk appetite?</label><br />
-                                <Controller
-                                    name="highrisk"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Low" id="highrisk_low" data-val='1' /><span className="ques">Low</span><br />
-                                            <input type="radio" {...field} value="Medium" id="highrisk_medium" data-val='2' /><span className="ques">Medium</span><br />
-                                            <input type="radio" value="High" {...field} id="highrisk_high" data-val='4' /><span className="ques">High</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.highrisk && <p className="text-danger">{errors.highrisk.message}</p>}
-                            </div>
-                            {/* Question 18 */}
-                            <div className="col-md-4">
-                                <label>18.Your involvement on trading ?</label><br />
-                                <Controller
-                                    name="involvement"
-                                    control={control}
-                                    rules={{ required: 'Please select an option' }}
-                                    render={({ field }) => (
-                                        <>
-                                            <input type="radio" {...field} value="Rarely traded" id="involvement_rarely" data-val='1' /><span className="ques">Rarely traded</span><br />
-                                            <input type="radio" {...field} value="Traded sometimes" id="involvement_sometimes" data-val='2' /><span className="ques">Traded sometimes </span><br />
-                                            <input type="radio" {...field} value="full time trader" id="involvement_fulltime" data-val='4' /><span className="ques">You are a full time trader</span><br />
-                                            <input type="radio" {...field} value="part time trader" id="involvement_parttime" data-val='3' /><span className="ques">You are a part time trader</span>
-                                        </>
-                                    )}
-                                />
-                                {errors.involvement && <p className="text-danger">{errors.involvement.message}</p>}
-                            </div>
-                        </div>
+                button[type="submit"]:hover:not(:disabled) {
+                    background-color: #218838;
+                }
 
-                        <div className="col-md-12 border border visiblePc"></div>
+                button[type="submit"]:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
 
-                        {/* Question 19 */}
-                        <div className="col-md-4">
-                            <br />
-                            <label> 19. Purpose of your investment, in terms of earning profit ? </label><br />
-                            <Controller
-                                name="investment"
-                                control={control}
-                                rules={{ required: 'Please select an option' }}
-                                render={({ field }) => (
-                                    <>
-                                        <input type="radio" {...field} value="10 to 20 % Monthly return on investment" id="investment_10_20" data-val='1' /><span className="ques">10 to 20 % Monthly return on investment</span><br />
-                                        <input type="radio" {...field} value="20 to 30 % Monthly return on investment" id="investment_20_30" data-val='2' /><span className="ques">20 to 30 % Monthly return on investment</span><br />
-                                        <input type="radio" {...field} value="30 to 40 % Monthly return on investment" id="investment_30_40" data-val='3' /><span className="ques">30 to 40 % Monthly return on investment</span><br />
-                                        <input type="radio" {...field} value="More than 40 % Monthly return on investment" id="investment_40plus" data-val='4' /><span className="ques">More than 40 % Monthly return on investment</span>
-                                    </>
-                                )}
-                            />
-                            {errors.investment && <p className="text-danger">{errors.investment.message}</p>}
-                        </div>
+                p {
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    margin-bottom: 10px;
+                }
 
-                        {/* Question 20 */}
-                        <div className="col-md-4">
-                            <br />
-                            <label> 20.How secure is your current and future income from sources such as salary, pensions or other investments? </label><br />
-                            <Controller
-                                name="pensions"
-                                control={control}
-                                rules={{ required: 'Please select an option' }}
-                                render={({ field }) => (
-                                    <>
-                                        <input type="radio" {...field} value="Not Secure" id="pensions_not" data-val='1' /><span className="ques">Not Secure</span><br />
-                                        <input type="radio" {...field} value="Somewhat Secure" id="pensions_somewhat" data-val='2' /><span className="ques">Somewhat Secure</span><br />
-                                        <input type="radio" value="Fairly Secure" {...field} id="pensions_fairly" data-val='3' /><span className="ques">Fairly Secure</span><br />
-                                        <input type="radio" {...field} value="Very Secure" id="pensions_very" data-val='4' /><span className="ques">Very Secure</span>
-                                    </>
-                                )}
-                            />
-                            {errors.pensions && <p className="text-danger">{errors.pensions.message}</p>}
-                        </div>
+                p.success-message {
+                    color: #28a745;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-top: 15px;
+                }
 
-                        {/* Question 21 */}
-                        <div className="col-md-4">
-                            <br />
-                            <label>21 .Are you any of the following, or are directly or indirectly related to any of the following ?</label><br />
-                            <Controller
-                                name="indirectly"
-                                control={control}
-                                rules={{ required: 'Please select an option' }}
-                                render={({ field }) => (
-                                    <>
-                                        <input type="radio" {...field} value="Civil Servant" id="indirectly_civil" /><span className="ques">Civil Servant</span><br />
-                                        <input type="radio" {...field} value="Politician" id="indirectly_politician" /><span className="ques">Politician</span><br />
-                                        <input type="radio" {...field} value="Current or former head of state" id="indirectly_headofstate" /><span className="ques">Current or former head of state</span><br />
-                                        <input type="radio" {...field} value="Bureaucrat (Tax authorities, Foreign Services, IAS etc)" id="indirectly_bureaucrat" /><span className="ques">Bureaucrat (Tax authorities, Foreign Services, IAS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   etc)</span><br />
-                                        <input type="radio" {...field} value="Current or former MP/MLA/MLC" id="indirectly_mpmla" /><span className="ques">Current or former MP/MLA/MLC</span><br />
-                                        <input type="radio" {...field} value="Connected to Media" id="indirectly_media" /><span className="ques">Connected to Media</span><br />
-                                        <input type="radio" {...field} value="NA" id="indirectly_na" /><span className="ques">NA</span>
-                                    </>
-                                )}
-                            />
-                            {errors.indirectly && <p className="text-danger">{errors.indirectly.message}</p>}
-                        </div>
+                /* Responsive adjustments */
+                @media (max-width: 600px) {
+                    .risk-profile-container {
+                        margin: 20px 10px;
+                        padding: 20px;
+                    }
+                }
+            `}</style>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h2>Risk Profile Assessment</h2>
 
-                        <div className="col-md-12 border visiblePc"></div>
+                {/* Personal Information */}
+                <h3>Personal Information</h3>
+                <label>
+                    Name:
+                    <input type="text" {...register('name', { required: 'Name is required' })} />
+                    {errors.name && <span className="error-message">{errors.name.message}</span>}
+                </label>
+                <label>
+                    Mobile:
+                    <input type="text" {...register('mobile', { required: 'Mobile is required', pattern: { value: /^[0-9]{10}$/, message: 'Invalid mobile number (10 digits)' }})} />
+                    {errors.mobile && <span className="error-message">{errors.mobile.message}</span>}
+                </label>
+                <label>
+                    Email:
+                    <input type="email" {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } })} />
+                    {errors.email && <span className="error-message">{errors.email.message}</span>}
+                </label>
+                <label>
+                    PAN No:
+                    <input type="text" {...register('panno', { required: 'PAN is required', pattern: { value: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/i, message: 'Invalid PAN format' } })} />
+                    {errors.panno && <span className="error-message">{errors.panno.message}</span>}
+                </label>
+                <label>
+                    Aadhar No:
+                    <input type="text" {...register('adhar', { required: 'Aadhar is required', pattern: { value: /^[0-9]{12}$/, message: 'Invalid Aadhar number (12 digits)' } })} />
+                    {errors.adhar && <span className="error-message">{errors.adhar.message}</span>}
+                </label>
+                <label>
+                    Date of Birth:
+                    <input type="date" {...register('birth', { required: 'Date of Birth is required' })} />
+                    {errors.birth && <span className="error-message">{errors.birth.message}</span>}
+                </label>
+                <label>
+                    Gender:
+                    <select {...register('gender1', { required: 'Gender is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    {errors.gender1 && <span className="error-message">{errors.gender1.message}</span>}
+                </label>
+                <label>
+                    Age Group:
+                    <select {...register('agegroup', { required: 'Age Group is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Under 30">Under 30</option>
+                        <option value="30-45">30-45</option>
+                        <option value="45-60">45-60</option>
+                        <option value="Above 60">Above 60</option>
+                    </select>
+                    {errors.agegroup && <span className="error-message">{errors.agegroup.message}</span>}
+                </label>
 
-                        <div className="col-md-12 mt20">
-                            <div className="col-md-12 border visibleTs mb"></div>
-                            <div className="col-md-8 servicesCheckbox" style={{ display: servicesOffered.length > 0 ? 'block' : 'none' }}>
-                                <label> Determined Risk Profile: <b>{riskProfile}</b> </label><br/>
-                                <label> Services to be Offered: </label>
-                                <div className="allServices checkbox">
-                                    <ul>
-                                        {servicesOffered.map((service, index) => (
-                                            <li key={index}>{service}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <br />
-                            <div className="row">
-                                <div className="col-lg-12 text-center">
-                                    <button type="submit" className="btn01">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                {/* Financial Information */}
+                <h3>Financial Information</h3>
+                <label>
+                    Investment Goal:
+                    <select {...register('invgoal', { required: 'Investment Goal is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Capital Appreciation">Capital Appreciation</option>
+                        <option value="Regular Income">Regular Income</option>
+                        <option value="Wealth Preservation">Wealth Preservation</option>
+                        <option value="Tax Saving">Tax Saving</option>
+                    </select>
+                    {errors.invgoal && <span className="error-message">{errors.invgoal.message}</span>}
+                </label>
+                <label>
+                    Occupation:
+                    <select {...register('occupation', { required: 'Occupation is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Salaried">Salaried</option>
+                        <option value="Business">Business</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Retired">Retired</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    {errors.occupation && <span className="error-message">{errors.occupation.message}</span>}
+                </label>
+                <label>
+                    Annual Income:
+                    <select {...register('income', { required: 'Income is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Below 2 lac">Below 2 lac</option>
+                        <option value="2-5 lac">2-5 lac</option>
+                        <option value="5-10 lac">5-10 lac</option>
+                        <option value="Above 10 lac">Above 10 lac</option>
+                    </select>
+                    {errors.income && <span className="error-message">{errors.income.message}</span>}
+                </label>
+                <label>
+                    Trading Frequency:
+                    <select {...register('trading', { required: 'Trading frequency is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Occasionally">Occasionally</option>
+                    </select>
+                    {errors.trading && <span className="error-message">{errors.trading.message}</span>}
+                </label>
+                <label>
+                    Preferred Trading Style:
+                    <select {...register('preftrading', { required: 'Preferred trading style is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Intraday Trading">Intraday Trading</option>
+                        <option value="Swing Trading">Swing Trading</option>
+                        <option value="BTST/STBT Trading">BTST/STBT Trading</option>
+                        <option value="Long Term Investing">Long Term Investing</option>
+                    </select>
+                    {errors.preftrading && <span className="error-message">{errors.preftrading.message}</span>}
+                </label>
+                <label>
+                    Trading Experience:
+                    <select {...register('tradingexp', { required: 'Trading experience is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Less than 1 year">Less than 1 year</option>
+                        <option value="1-3 years">1-3 years</option>
+                        <option value="3-5 years">3-5 years</option>
+                        <option value="More than 5 years">More than 5 years</option>
+                    </select>
+                    {errors.tradingexp && <span className="error-message">{errors.tradingexp.message}</span>}
+                </label>
+                <label>
+                    When do you plan to quit trading completely?
+                    <select {...register('quitexp', { required: 'This field is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Never">Never</option>
+                        <option value="Maybe in 1-2 years">Maybe in 1-2 years</option>
+                        <option value="Maybe in 3-5 years">Maybe in 3-5 years</option>
+                        <option value="Not at all">Not at all</option>
+                    </select>
+                    {errors.quitexp && <span className="error-message">{errors.quitexp.message}</span>}
+                </label>
+                <label>
+                    Knowledge about Debt Funds:
+                    <select {...register('debt', { required: 'Knowledge is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Very less Experience">Very less Experience</option>
+                        <option value="Less Experience">Less Experience</option>
+                        <option value="Moderate experience">Moderate experience</option>
+                        <option value="High Experience">High Experience</option>
+                        <option value="Very high Experience">Very high Experience</option>
+                    </select>
+                    {errors.debt && <span className="error-message">{errors.debt.message}</span>}
+                </label>
+                <label>
+                    Knowledge about Fund Types:
+                    <select {...register('fund', { required: 'Knowledge is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Very less Experience">Very less Experience</option>
+                        <option value="Less Experience">Less Experience</option>
+                        <option value="Moderate experience">Moderate experience</option>
+                        <option value="High Experience">High Experience</option>
+                        <option value="Very high Experience">Very high Experience</option>
+                    </select>
+                    {errors.fund && <span className="error-message">{errors.fund.message}</span>}
+                </label>
+                <label>
+                    Number of Dependents:
+                    <select {...register('depend', { required: 'This field is required' })}>
+                        <option value="">Select...</option>
+                        <option value="0">0</option>
+                        <option value="1-2">1-2</option>
+                        <option value="3-5">3-5</option>
+                        <option value="More than 5">More than 5</option>
+                    </select>
+                    {errors.depend && <span className="error-message">{errors.depend.message}</span>}
+                </label>
+                <label>
+                    Emergency Fund Cover (in months):
+                    <select {...register('emerfund', { required: 'This field is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Less than 1 month">Less than 1 month</option>
+                        <option value="Between 1-3 months">Between 1-3 months</option>
+                        <option value="Between 3-6 months">Between 3-6 months</option>
+                        <option value="More than 6 months">More than 6 months</option>
+                    </select>
+                    {errors.emerfund && <span className="error-message">{errors.emerfund.message}</span>}
+                </label>
+                <label>
+                    Risk Tolerance:
+                    <select {...register('tolerance', { required: 'Risk tolerance is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Low tolerance">Low tolerance</option>
+                        <option value="Moderate tolerance">Moderate tolerance</option>
+                        <option value="High tolerance">High tolerance</option>
+                    </select>
+                    {errors.tolerance && <span className="error-message">{errors.tolerance.message}</span>}
+                </label>
+                <label>
+                    Overall Investment Experience:
+                    <select {...register('overall_exp_invest', { required: 'Experience is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Very less Experience">Very less Experience</option>
+                        <option value="Less Experience">Less Experience</option>
+                        <option value="Moderate experience">Moderate experience</option>
+                        <option value="High Experience">High Experience</option>
+                        <option value="Very high Experience">Very high Experience</option>
+                    </select>
+                    {errors.overall_exp_invest && <span className="error-message">{errors.overall_exp_invest.message}</span>}
+                </label>
+                <label>
+                    Market Expectations:
+                    <select {...register('expect', { required: 'Market expectation is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Very Aggressive">Very Aggressive</option>
+                        <option value="Aggressive">Aggressive</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Conservative">Conservative</option>
+                        <option value="Very Conservative">Very Conservative</option>
+                    </select>
+                    {errors.expect && <span className="error-message">{errors.expect.message}</span>}
+                </label>
+                <label>
+                    Market Direction View:
+                    <select {...register('market_direction', { required: 'Market direction view is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Bullish">Bullish</option>
+                        <option value="Bearish">Bearish</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Indifferent">Indifferent</option>
+                    </select>
+                    {errors.market_direction && <span className="error-message">{errors.market_direction.message}</span>}
+                </label>
+                <label>
+                    Investment Decision Making:
+                    <select {...register('inv_decision', { required: 'Decision making style is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Self-made decisions">Self-made decisions</option>
+                        <option value="Based on advice">Based on advice</option>
+                        <option value="Combination of both">Combination of both</option>
+                    </select>
+                    {errors.inv_decision && <span className="error-message">{errors.inv_decision.message}</span>}
+                </label>
+                <label>
+                    Time Horizon for Investment:
+                    <select {...register('time_invest', { required: 'Time horizon is required' })}>
+                        <option value="">Select...</option>
+                        <option value="Short term (less than 1 year)">Short term (less than 1 year)</option>
+                        <option value="Medium term (1-3 years)">Medium term (1-3 years)</option>
+                        <option value="Long term (3-5 years)">Long term (3-5 years)</option>
+                        <option value="Very long term (5+ years)">Very long term (5+ years)</option>
+                    </select>
+                    {errors.time_invest && <span className="error-message">{errors.time_invest.message}</span>}
+                </label>
+
+                {/* Services Offered - Checkboxes */}
+                <h3>Services Interested In:</h3>
+                <div className="checkbox-group">
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                value="Equity (Long Term)"
+                                {...register('servicesOffered')}
+                            />{' '}
+                            Equity (Long Term)
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                value="Debt Funds"
+                                {...register('servicesOffered')}
+                            />{' '}
+                            Debt Funds
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                value="Fixed Deposits"
+                                {...register('servicesOffered')}
+                            />{' '}
+                            Fixed Deposits
+                        </label>
+                    </div>
+                    {/* Add more services as needed */}
                 </div>
-            </div>
-        </>
-    );
-};
 
-export default RiskProfile;
+                {/* Display Calculated Risk Score and Profile (Optional - for user info) */}
+                <h3>Calculated Risk Assessment:</h3>
+                <p>Total Risk Score: **{totalRiskScore}**</p>
+                <p>Calculated Risk Profile: **{riskProfile}**</p>
+
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit Risk Profile'}
+                </button>
+                {isSubmitSuccessful && <p className="success-message">Form submitted successfully!</p>}
+            </form>
+        </div>
+    );
+}
+
+export default RiskProfileForm;
